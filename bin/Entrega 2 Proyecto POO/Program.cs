@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Entrega_2_Proyecto_POO
@@ -169,6 +170,12 @@ namespace Entrega_2_Proyecto_POO
                 Reporte6(simular.AllStores);
                 Reporte7(simular.AllStores,i);
                 Reporte8(simular.AllStores);
+                Thread.Sleep(1000);
+                if (Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.P)
+                {
+                    Console.ReadKey();
+                    
+                }
             }
             Console.Read();            
         }
