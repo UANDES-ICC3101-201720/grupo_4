@@ -12,7 +12,6 @@ namespace Entrega_2_Proyecto_POO
         public int Volumen;
         public Piso Piso;
         public string Nombre;
-        public int Ganancia;
         public int CantidadTrabajadores;
         public int PrecioMinimo;
         public int PrecioMaximo;
@@ -21,12 +20,12 @@ namespace Entrega_2_Proyecto_POO
         public int ClientesAhora;
         public int ClientesDiaAnterior;
         public int GananciaEfectiva;
+        public List<int> GananciasDiarias;
         public Tienda(int volumen, string nombre, int PrecioMinimo, int PrecioMaximo,Piso Piso)
         {
             this.Piso = Piso;
             this.Volumen = volumen;
             this.Nombre = nombre;
-            this.Ganancia = 0;
             this.CantidadTrabajadores = 0;
             this.PrecioMinimo = PrecioMinimo;
             this.PrecioMaximo = PrecioMaximo;
@@ -35,20 +34,16 @@ namespace Entrega_2_Proyecto_POO
             this.ClientesDiaAnterior = 0;
             this.Trabajadores = new List<Trabajadores>();
             this.GananciaEfectiva = 0;
-
+            this.GananciasDiarias = new List<int>();
         }
         public void AgregarTrabajador(Trabajadores Trabajador)
         {
             Trabajadores.Add(Trabajador);
             CantidadTrabajadores += 1;
         }
-        public void TiempoEnTienda()
-        {
-
-        }
         public void SumarGanancia(int venta)
         {
-            Ganancia += venta;
+            GananciaEfectiva += venta;
         }
         public int ClientesPorDia(int CantidadTrabajadores,int ClientesDiaAnterior,int AreaLocal,int PrecioMinimo,int PrecioMaximo)
         {
@@ -64,8 +59,20 @@ namespace Entrega_2_Proyecto_POO
             int V = random.Next(PrecioMinimo, PrecioMaximo);
             int Ganancia = V * CMAX - (CantidadTrabajadores + CostoArriendo);
             GananciaEfectiva = Ganancia;
-
-
+        }
+        public void SumarCliente()
+        {
+            ContadorClientes += 1;
+        }
+        public void IniciarDia()
+        {
+            ContadorClientes = 0;
+            GananciaEfectiva = 0;
+        }
+        public void TerminarDia()
+        {
+            GananciasDiarias.Add(GananciaEfectiva);
+            ClientesDiaAnterior = ContadorClientes;
         }
     }
 }

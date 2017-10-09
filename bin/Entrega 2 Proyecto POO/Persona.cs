@@ -15,9 +15,11 @@ namespace Entrega_2_Proyecto_POO
         {
             this.nombre = nombre;
         }
-        public void EntrarMall(Piso Piso)
+        public void EntrarMall(Piso Piso,Mall Mall)
         {
             this.Piso = Piso;
+            this.PisoEntrar = Piso;
+            Mall.RecepcionCliente();
 
         }
         public void SalirMall()

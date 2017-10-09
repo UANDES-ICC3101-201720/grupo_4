@@ -11,21 +11,43 @@ namespace Entrega_2_Proyecto_POO
         public List<Tienda> Tiendas;
         public List<int> Gasto;
 
-        public Plan_de_Compras(List<Tienda> tienda, List<int> gasto)
+        public Plan_de_Compras()
         {
-            this.Tiendas = tienda;
-            this.Gasto = gasto;
+            this.Tiendas = new List<Tienda>();
+            this.Gasto = new List<int>();
         }
-        public void GenerarPlan(List<Tienda> Tienda,Cliente Cliente)
+        public void GenerarPlan(List<Tienda> Tienda,Cliente cliente,List<Piso> Piso)
+        {
+            List<Piso> Pisos = Piso;
+            Random random = new Random();
+            int cantidad = random.Next(Pisos.Count() - 1);
+            int cotamax = 10;
+            int cotamin = 8;
+            int rnd = random.Next(cotamin,cotamax);
+            Piso entrar = cliente.PisoEntrar;
+            GenerarPlanPorPiso(Tienda, cliente, entrar, rnd);
+            Pisos.Remove(entrar);
+            for (int i = 1; i <= cantidad; i++)
+            {               
+                cotamax -= 2;
+                cotamin -= 2;
+                int rnd1 = random.Next(cotamin, cotamax);
+                int rnd2 = random.Next(Pisos.Count() - 1);
+                Piso piso = Pisos[rnd2];
+                GenerarPlanPorPiso(Tienda,cliente,piso,rnd1);               
+            }
+        }
+        public void GenerarPlanPorPiso(List<Tienda> Tienda,Cliente Cliente,Piso piso,int cantidad)
         {
             Random random = new Random();
             int Presupuesto = Cliente.PresupuestoInicial;
-            int CantidadTiendas = random.Next(5, 20);
+            int CantidadTiendas = random.Next(2,5);
             for (int i=0; i <= CantidadTiendas; i++)
             {
-                int SelectStore = random.Next(Tienda.Count-1);
-                this.Tiendas.Add(Tienda[SelectStore]);
-                int Gastar = random.Next(Tienda[SelectStore].PrecioMaximo, Tienda[SelectStore].PrecioMinimo)*random.Next(1,5);
+                List<Tienda> SelectStore = Tienda.Where(tienda => tienda.Piso.numero==piso.numero).ToList();
+                int SelectStoreRnd = random.Next(SelectStore.Count() - 1);
+                this.Tiendas.Add(Tienda[SelectStoreRnd]);
+                int Gastar = random.Next(Tienda[SelectStoreRnd].PrecioMinimo, Tienda[SelectStoreRnd].PrecioMaximo) *random.Next(1,5);
                 if (Presupuesto - Gastar > 0)
                 {
                     Gasto.Add(Gastar);
@@ -36,24 +58,6 @@ namespace Entrega_2_Proyecto_POO
                     Gasto.Add(0);
                 }
             }
-        }
-        public void OrdenarPlan(List<Tienda> Tienda,List<int> Gasto,Cliente Cliente)
-        {
-            List<Tienda> Stores=new List<Tienda>();
-            List<int> Lista = new List<int>();
-            foreach (Tienda Store in Tienda)
-            {
-                if (Store.Piso != Cliente.PisoEntrar)
-                {
-                    Lista.Add(Store.Piso.numero);
-                }
-                else
-                {
-                    Stores.Add(Store);
-                }                
-            }
-            Lista.Sort();
-
         }
     }
 }

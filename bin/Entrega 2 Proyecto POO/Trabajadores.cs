@@ -8,7 +8,11 @@ namespace Entrega_2_Proyecto_POO
 {
     public class Trabajadores : Persona
     {
-        public Trabajadores(string nombre) : base(nombre) { }
+        public Tienda Tienda;
+        public Trabajadores(string nombre,Tienda Tienda) : base(nombre)
+        {
+            this.Tienda = Tienda;
+        }
         public void Vender(Tienda tienda,int Cantidad)
         {
             tienda.SumarGanancia(Cantidad);

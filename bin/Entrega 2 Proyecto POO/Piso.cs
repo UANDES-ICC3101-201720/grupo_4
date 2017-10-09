@@ -14,11 +14,12 @@ namespace Entrega_2_Proyecto_POO
         public int AreaOcupada;
         public int Estacionamientos;
         public int EstacionamientosOcupados;
-        public Piso(int Area,int Estacionamientos,int EstacionamientosOcupados)
+        public Piso(int Area,int Estacionamientos,int numero)
         {
+            this.numero = numero;
             this.Area = Area;
             this.Estacionamientos = Estacionamientos;
-            this.EstacionamientosOcupados = EstacionamientosOcupados;
+            this.EstacionamientosOcupados = 0;
             this.Tiendas = new List<Tienda>();
             this.AreaOcupada = 0;
         }
@@ -31,7 +32,7 @@ namespace Entrega_2_Proyecto_POO
             else
             {
                 Tiendas.Add(Tienda);
-                AreaOcupada += Volumen;
+                AreaOcupada += Volumen/2;
             }
         }
     }
