@@ -13,9 +13,9 @@ namespace Entrega_2_Proyecto_POO
         {
             this.Tienda = Tienda;
         }
-        public void Vender(Tienda tienda,int Cantidad)
+        public void Atender(Tienda tienda)
         {
-            tienda.SumarGanancia(Cantidad);
+            tienda.SumarCliente();
         }
     }
 }

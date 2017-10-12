@@ -67,7 +67,11 @@ namespace Entrega_2_Proyecto_POO
                     TiendaMax = tienda;
                 }
             }
-            Console.WriteLine("La tienda con la mayor ganancia total es "+ TiendaMax.Nombre+" y su ganancia total es de: "+ GananciaMaxima.ToString());
+            try { Console.WriteLine("La tienda con la mayor ganancia total es " + TiendaMax.Nombre + " y su ganancia total es de: " + GananciaMaxima.ToString()); }
+            catch
+            {
+                Console.WriteLine("No todos tienen ganancias negativas para este dia");
+            }
         }
         public static void Reporte6(List<Tienda> Tiendas)
         {

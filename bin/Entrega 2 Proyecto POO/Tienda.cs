@@ -41,10 +41,6 @@ namespace Entrega_2_Proyecto_POO
             Trabajadores.Add(Trabajador);
             CantidadTrabajadores += 1;
         }
-        public void SumarGanancia(int venta)
-        {
-            GananciaEfectiva += venta;
-        }
         public int ClientesPorDia(int CantidadTrabajadores,int ClientesDiaAnterior,int AreaLocal,int PrecioMinimo,int PrecioMaximo)
         {
             int CMAX = 0;
@@ -71,6 +67,7 @@ namespace Entrega_2_Proyecto_POO
         }
         public void TerminarDia()
         {
+            this.GananciaLocal(this.PrecioMinimo,this.PrecioMaximo,this.Volumen,this.CantidadTrabajadores,this.ClientesDiaAnterior);
             GananciasDiarias.Add(GananciaEfectiva);
             ClientesDiaAnterior = ContadorClientes;
         }

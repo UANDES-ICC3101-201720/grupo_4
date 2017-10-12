@@ -34,9 +34,8 @@ namespace Entrega_2_Proyecto_POO
                 }
                 int demoraentienda = random.Next(Plan.Tiendas[i].Volumen / 2, Plan.Tiendas[i].Volumen);
                 Tiempo += demoraentienda;
-                Plan.Tiendas[i].SumarCliente();
                 int trabajador = random.Next(Plan.Tiendas[i].Trabajadores.Count() - 1);
-                Plan.Tiendas[i].Trabajadores[trabajador].Vender(Plan.Tiendas[i], Plan.Gasto[i]);
+                Plan.Tiendas[i].Trabajadores[trabajador].Atender(Plan.Tiendas[i]);
                 if (i != 0)
                 {
                     if (Plan.Tiendas[i - 1].Piso != Plan.Tiendas[i].Piso)
