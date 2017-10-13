@@ -16,7 +16,7 @@ namespace Entrega_2_Proyecto_POO
         public void CrearClientes(List<string> Nombres, List<Tienda> Tiendas, List<Piso> Pisos)
         {
             Random random = new Random();
-            int CantidadClientes = random.Next(2000, 5000);
+            int CantidadClientes = random.Next(4000, 25000);
             for (int i = 0; i <= CantidadClientes; i++)
             {
                 List<Piso> aux = new List<Piso>();
@@ -148,7 +148,7 @@ namespace Entrega_2_Proyecto_POO
         public void EntradaAlMall(List<Cliente> Clientes,Mall mall)
         {
             Random random = new Random();
-            int cantidad = random.Next(2,4);
+            int cantidad = random.Next(4,10);
             for (int i = 0; i<=cantidad; i++)
             {
                 if (Clientes.Count() == 1)

@@ -16,9 +16,13 @@ namespace Entrega_2_Proyecto_POO
         }
         public void GenerarPlan(List<Tienda> Tienda,Cliente cliente,List<Piso> Piso)
         {
-            List<Piso> Pisos = Piso;
+            List<Piso> Pisos = new List<Piso>();
+            foreach(Piso piso in Piso)
+            {
+                Pisos.Add(piso);
+            }
             Random random = new Random();
-            int cantidad = random.Next(Pisos.Count());
+            int cantidad = random.Next(1,Pisos.Count());
             Piso entrar = cliente.PisoEntrar;
             GenerarPlanPorPiso(Tienda, cliente, entrar);
             Pisos.Remove(entrar);
@@ -33,10 +37,10 @@ namespace Entrega_2_Proyecto_POO
         {
             Random random = new Random();
             int Presupuesto = Cliente.PresupuestoInicial;
-            int CantidadTiendas = random.Next(1,5);
+            int CantidadTiendas = random.Next(10,15);
             for (int i=0; i <= CantidadTiendas; i++)
             {
-                List<Tienda> SelectStore = Tienda.Where(tienda => tienda.Piso.numero==piso.numero).ToList();
+                List<Tienda> SelectStore = Tienda.Where(tienda => tienda.Piso.numero.Equals(piso.numero)).ToList();
                 int SelectStoreRnd = random.Next(SelectStore.Count());
                 if (!Tiendas.Contains(Tienda[SelectStoreRnd]))
                 {
