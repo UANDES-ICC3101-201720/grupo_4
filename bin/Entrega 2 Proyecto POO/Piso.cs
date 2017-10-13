@@ -32,7 +32,7 @@ namespace Entrega_2_Proyecto_POO
             else
             {
                 Tiendas.Add(Tienda);
-                AreaOcupada += Volumen/2;
+                AreaOcupada =AreaOcupada + Volumen/2;
             }
         }
     }

@@ -126,7 +126,7 @@ namespace Entrega_2_Proyecto_POO
             Simular simular = new Simular();
             Console.WriteLine("Ingrese la Cantidad de Horas del Mall");
             int minutos = Convert.ToInt32(Console.ReadLine()) * 60;
-            Console.Write("Ingrese la Cantidad de dinero inicial del Mall\n");
+            Console.WriteLine("Ingrese la Cantidad de dinero inicial del Mall");
             int plataMall = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Ingrese la Cantidad de pisos");
             int cantidadPisos = Convert.ToInt32(Console.ReadLine());

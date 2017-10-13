@@ -24,8 +24,8 @@ namespace Entrega_2_Proyecto_POO
         }
         public void RecorrerPlan(Plan_de_Compras Plan)
         {
-            int LargoPlan = Plan.Tiendas.Count()-1;
-            for (int i = 0; i <= LargoPlan; i++)
+            int LargoPlan = Plan.Tiendas.Count();
+            for (int i = 0; i < LargoPlan; i++)
             {
                 Random random = new Random();
                 if (Plan.Tiendas[i].ClientesAhora == Plan.Tiendas[i].Volumen)
@@ -34,7 +34,7 @@ namespace Entrega_2_Proyecto_POO
                 }
                 int demoraentienda = random.Next(Plan.Tiendas[i].Volumen / 2, Plan.Tiendas[i].Volumen);
                 Tiempo += demoraentienda;
-                int trabajador = random.Next(Plan.Tiendas[i].Trabajadores.Count() - 1);
+                int trabajador = random.Next(Plan.Tiendas[i].Trabajadores.Count());
                 Plan.Tiendas[i].Trabajadores[trabajador].Atender(Plan.Tiendas[i]);
                 if (i != 0)
                 {

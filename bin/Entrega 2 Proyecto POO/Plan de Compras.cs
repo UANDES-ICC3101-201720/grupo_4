@@ -9,54 +9,40 @@ namespace Entrega_2_Proyecto_POO
     public class Plan_de_Compras
     {
         public List<Tienda> Tiendas;
-        public List<int> Gasto;
 
         public Plan_de_Compras()
         {
             this.Tiendas = new List<Tienda>();
-            this.Gasto = new List<int>();
         }
         public void GenerarPlan(List<Tienda> Tienda,Cliente cliente,List<Piso> Piso)
         {
             List<Piso> Pisos = Piso;
             Random random = new Random();
-            int cantidad = random.Next(Pisos.Count() - 1);
-            int cotamax = 10;
-            int cotamin = 8;
-            int rnd = random.Next(cotamin,cotamax);
+            int cantidad = random.Next(Pisos.Count());
             Piso entrar = cliente.PisoEntrar;
-            GenerarPlanPorPiso(Tienda, cliente, entrar, rnd);
+            GenerarPlanPorPiso(Tienda, cliente, entrar);
             Pisos.Remove(entrar);
             for (int i = 1; i <= cantidad; i++)
-            {               
-                cotamax -= 2;
-                cotamin -= 2;
-                int rnd1 = random.Next(cotamin, cotamax);
-                int rnd2 = random.Next(Pisos.Count() - 1);
+            {         
+                int rnd2 = random.Next(Pisos.Count());
                 Piso piso = Pisos[rnd2];
-                GenerarPlanPorPiso(Tienda,cliente,piso,rnd1);               
+                GenerarPlanPorPiso(Tienda,cliente,piso);               
             }
         }
-        public void GenerarPlanPorPiso(List<Tienda> Tienda,Cliente Cliente,Piso piso,int cantidad)
+        public void GenerarPlanPorPiso(List<Tienda> Tienda,Cliente Cliente,Piso piso)
         {
             Random random = new Random();
             int Presupuesto = Cliente.PresupuestoInicial;
-            int CantidadTiendas = random.Next(2,5);
+            int CantidadTiendas = random.Next(1,5);
             for (int i=0; i <= CantidadTiendas; i++)
             {
                 List<Tienda> SelectStore = Tienda.Where(tienda => tienda.Piso.numero==piso.numero).ToList();
-                int SelectStoreRnd = random.Next(SelectStore.Count() - 1);
-                this.Tiendas.Add(Tienda[SelectStoreRnd]);
-                int Gastar = random.Next(Tienda[SelectStoreRnd].PrecioMinimo, Tienda[SelectStoreRnd].PrecioMaximo) *random.Next(1,5);
-                if (Presupuesto - Gastar > 0)
+                int SelectStoreRnd = random.Next(SelectStore.Count());
+                if (!Tiendas.Contains(Tienda[SelectStoreRnd]))
                 {
-                    Gasto.Add(Gastar);
-                    Presupuesto = Presupuesto - Gastar;
+                    this.Tiendas.Add(Tienda[SelectStoreRnd]);
                 }
-                else
-                {
-                    Gasto.Add(0);
-                }
+                
             }
         }
     }

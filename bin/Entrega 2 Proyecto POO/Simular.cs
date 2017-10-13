@@ -24,10 +24,10 @@ namespace Entrega_2_Proyecto_POO
                 {
                     aux.Add(piso);
                 }
-                string nombre = Nombres[random.Next(Nombres.Count() - 1)];
+                string nombre = Nombres[random.Next(Nombres.Count())];
                 int presupuesto = random.Next(5000, 20000);
                 List<bool> autos = new List<bool> { true, false };
-                bool auto = autos[random.Next(autos.Count() - 1)];
+                bool auto = autos[random.Next(autos.Count())];
                 int pisornd = 0;
                 if (aux.Count() == 1)
                 {
@@ -40,7 +40,7 @@ namespace Entrega_2_Proyecto_POO
                 }
                 if (aux.Count() > 1)
                 {
-                    pisornd = random.Next(aux.Count() - 1);
+                    pisornd = random.Next(aux.Count());
                     Cliente cliente = new Cliente(nombre, presupuesto, auto, aux[pisornd]);
                     Plan_de_Compras Plan = new Plan_de_Compras();
                     Plan.GenerarPlan(Tiendas, cliente, aux);
@@ -59,7 +59,7 @@ namespace Entrega_2_Proyecto_POO
                 int MaxTrabajadores = random.Next(10);
                 for (int i =0; i<=MaxTrabajadores; i++)
                 {
-                    string nombre = Nombres[random.Next(Nombres.Count() - 1)];
+                    string nombre = Nombres[random.Next(Nombres.Count())];
                     Trabajadores trabajador = new Trabajadores(nombre, tienda);
                     tienda.AgregarTrabajador(trabajador);
                 }
@@ -84,22 +84,21 @@ namespace Entrega_2_Proyecto_POO
                 List<string> Comida = new List<string> {"Rapida", "Restaurant"};
                 List<string> Entretencion = new List<string> {"Cine", "Juegos", "Bowling"};
                 List<string> Tipo = new List<string> { "Comercial", "Comida", "Entretencion"};
-                string restandoArea = (piso.Area - piso.AreaOcupada).ToString();
-                Console.WriteLine("Ingrese el Area del Local, Va restando "+restandoArea+" area de este piso");
+                Console.WriteLine("Ingrese el Area del Local, se a usado "+piso.AreaOcupada+" area de este piso");
                 int Area = Convert.ToInt32(Console.ReadLine());
                 List<string> StoresNames = new List<string> { "Accenture", "Wells Fargo", "Estee Lauder", "ING", "Dell", "Hyundai", "Allianz", "Lexus", "Mastercard", "Colgate", "Nintendo", "Home Depot", "UPS", "Kraft", "IKEA", "Nestle", "ESPN", "Facebook", "Mercedes-Benz", "BMW,Subway", "Porsche", "Dell", "Sony", "Rolex", "Bank of America", "Caterpillar", "Canon", "Zara", "Louis Vuitton", "Samsung", "McDonald’s", "Microsoft", "Apple", "Armani", "Versace", "Gucci", "Burberry", "Ermenegildo Zegna", "Omega", "Tiffany & Co.", "Dolce & Gabbana ", "Carolina Herrera", "Longchamp", "Salvatore Ferragamo", "Louis Vuitton", "Tory Burch, ", "Jimmy Choo", "Ralph Lauren", "Michael Kors", "Jumbo", "Abcdin", "Tricot", "Johnson", "La Polar", "Homecenter Sodimac", "Tottus", "Falabella", "Armani Exchange", "Banana Republic", "Hugo Boss", "The North Face", "Kipling", "Gap", "Swarovski ", "Zara", "H&M", "París", "Ripley", "Nike", "Rosen", "Colun", "Carozzi", "Soprole", "Nestle", "Teleton", "Iansa", "Cav", "Mac", "Burger King", "Lee", "OPV", "Place Vandome", "Farmacia Ahumada", "Lider", "Wallmart", "Sparta", "Doite", "Tip y Tap", "Asus", "MSI", "Columbia", "Ruby Tuesday", "Mr Jack", "LG", "Bianchi", "SHot", "Cuncuna", "Emporio de la rosa", "Lapiz Lopez ", "Sex Shop", "Lucas Bar", "We Play", "Aliexpress", "Latam", "Microplay", "Ripcurl", "CineHoyts", "Cineplanet", "Sushisan", "Maldito sushi", "Swaroski" };
                 Random random = new Random();
-                int b = random.Next(Comercial.Count()-1);
-                int c = random.Next(Comida.Count()-1);
-                int d = random.Next(Entretencion.Count()-1);
-                int preciominimo = random.Next(100);
-                int preciomaximo = random.Next(1000);
+                int b = random.Next(Comercial.Count());
+                int c = random.Next(Comida.Count());
+                int d = random.Next(Entretencion.Count());
+                int preciominimo = random.Next(2000);
+                int preciomaximo = random.Next(2000,10000);
                 int aux = 0;
                 if (Tipo[aux] == "Comercial")
                 {
                     if (piso.AreaOcupada + Area <= piso.Area)
                     {
-                        string nombre = StoresNames[random.Next(StoresNames.Count() - 1)];
+                        string nombre = StoresNames[random.Next(StoresNames.Count())];
                         LocalComercial local = new LocalComercial(Comercial[b], Area,nombre,preciominimo,preciomaximo,piso);
                         StoresNames.Remove(nombre);
                         piso.AgregarTienda(local, Area);
@@ -115,7 +114,7 @@ namespace Entrega_2_Proyecto_POO
                 {
                     if (piso.AreaOcupada + Area <= piso.Area)
                     {
-                        string nombre = StoresNames[random.Next(StoresNames.Count() - 1)];
+                        string nombre = StoresNames[random.Next(StoresNames.Count())];
                         LocalEntretencion local = new LocalEntretencion(Comercial[b], Area, nombre, preciominimo, preciomaximo, piso);
                         StoresNames.Remove(nombre);
                         piso.AgregarTienda(local,Area);
@@ -131,7 +130,7 @@ namespace Entrega_2_Proyecto_POO
                 {
                     if (piso.AreaOcupada + Area <= piso.Area)
                     {
-                        string nombre = StoresNames[random.Next(StoresNames.Count() - 1)];
+                        string nombre = StoresNames[random.Next(StoresNames.Count())];
                         LocalComida local = new LocalComida(Comercial[b], Area, nombre, preciominimo, preciomaximo, piso);
                         StoresNames.Remove(nombre);
                         piso.AgregarTienda(local, Area);
@@ -162,7 +161,7 @@ namespace Entrega_2_Proyecto_POO
                 }
                 if (Clientes.Count() > 1)
                 {
-                    int clientepos = random.Next(Clientes.Count() - 1);
+                    int clientepos = random.Next(Clientes.Count());
                     Cliente cliente = Clientes[clientepos];
                     cliente.EntrarMall(cliente.PisoEntrar, mall);
                     cliente.RecorrerPlan(cliente.Plan);
