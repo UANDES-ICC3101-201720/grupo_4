@@ -5,25 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoPOO3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1280">
+        Title="MainWindow" Height="800" Width="1280" WindowStyle="ThreeDBorderWindow">
+    <Window.Background>
+        <ImageBrush Stretch="Uniform"/>
+    </Window.Background>
     <Grid Background="#FF913A3A">
         <Button Name="Boton" Visibility="Hidden" Content="Button" HorizontalAlignment="Left" Margin="93,228,0,0" VerticalAlignment="Top" Width="75" Background="#FF9E5A5A"/>
         <Label Name="DiaLabel" HorizontalAlignment="Left" FontSize="20" Margin="45,20,0,0" Content="Dia 1" VerticalAlignment="Top" Foreground="White" Cursor="Help"/>
-        <Button Name="Reportes" Visibility="Visible" Content="Reportes" Cursor="Hand" FontSize="24" HorizontalAlignment="Left" Margin="45,462,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Click="Reportes_Click" Height="72" BorderBrush="#FFF5E5E5" FontWeight="Bold"/>
-        <Button Name="Datos" Visibility="Visible" Content="Simular" ToolTipService.InitialShowDelay="5000"   Cursor="Hand" FontSize="24" HorizontalAlignment="Left" Margin="45,325,0,0" VerticalAlignment="Top" Width="267" Background="#FFF3EFEF" Click="Datos_Click" Height="70" BorderBrush="#FFF5E5E5" FontWeight="Bold"/>
-        <Button Name="Plano" Visibility="Visible" Content="Plano" Cursor="Hand" HorizontalAlignment="Left" Margin="45,190,0,0" VerticalAlignment="Top" FontSize="24" Width="267" Click="Plano_Click" Height="70" BorderBrush="#FFF9F9F9" FontWeight="Bold" Grid.IsSharedSizeScope="False" Background="White"/>
-        <Label Name="PisosLabel" Visibility="Hidden" Content="Ingrese Cantidad de Pisos" HorizontalAlignment="Left" Margin="128,107,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9"/>
-        <TextBox Name="PisosText" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="306,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" GotFocus="TextBox_TextChanged" Background="#FFF5F0F0" Foreground="Black"/>
-        <Button Name="EnterPisos" Visibility="Hidden" Content="Enter" Cursor="Hand"  HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="107" Background="#FFF3E7E7" BorderBrush="#FFA45050" Click="EnterPisos_Click" Height="41" FontSize="22" FontWeight="Bold" />
-        <Button Name="EnterAreas" Visibility="Hidden" Content="Enter" Cursor="Hand" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="107" Background="#FFF5EEEE" BorderBrush="#FFA45050" Click="EnterArea_Click" Height="41" FontSize="22" FontWeight="Bold"/>
+        <Button Name="Reportes" Visibility="Visible" Content="Reportes" Cursor="Hand" FontSize="24" HorizontalAlignment="Left" Margin="45,498,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Click="Reportes_Click" Height="72" BorderBrush="#FFF5E5E5" FontWeight="Bold"/>
+        <Button Name="Datos" Visibility="Visible" Content="Simular" ToolTipService.InitialShowDelay="5000"   Cursor="Hand" FontSize="24" HorizontalAlignment="Left" Margin="45,361,0,0" VerticalAlignment="Top" Width="267" Background="#FFF3EFEF" Click="Datos_Click" Height="70" BorderBrush="#FFF5E5E5" FontWeight="Bold"/>
+        <Button Name="Plano" Visibility="Visible" Content="Plano" Cursor="Hand" HorizontalAlignment="Left" Margin="45,226,0,0" VerticalAlignment="Top" FontSize="24" Width="267" Click="Plano_Click" Height="70" BorderBrush="#FFF9F9F9" FontWeight="Bold" Grid.IsSharedSizeScope="False" Background="White"/>
+        <Label Name="Titulo_Principal" Visibility="Visible" Content="Opciones De Mall" HorizontalContentAlignment="Center" FontSize="25"  HorizontalAlignment="Left" Foreground="#FFF9F9F9" Margin="45,125,0,0" VerticalAlignment="Top" Height="51" Width="267" TextOptions.TextHintingMode="Fixed"/>
+        <Image Name="Imagen_portada" Visibility="Visible" Margin="409,98,37.6,130.4" Source="C:\Users\vicen\OneDrive\Documentos\grupo_4\bin\ProyectoPOO3\ProyectoPOO3\Images\Capture001.jpg" RenderTransformOrigin="0.511,0.575" />
+        <Label Name="PisosLabel" Visibility="Hidden" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Ingrese Cantidad de Pisos" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" Height="80" Width="255"/>
+        <TextBox Name="PisosText" Visibility="Hidden" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="38" Margin="270,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" GotFocus="TextBox_TextChanged" Background="#FFF5F0F0" Foreground="Black" RenderTransformOrigin="0.441,0.448"/>
+        <Button Name="EnterPisos" Visibility="Hidden" Content="Enter" Cursor="Hand"  HorizontalAlignment="Left" Margin="93,296,0,0" VerticalAlignment="Top" Width="205" Background="#FFF3E7E7" BorderBrush="#FFA45050" Click="EnterPisos_Click" Height="93" FontSize="22" FontWeight="Bold" />
+        <Button Name="EnterAreas" Visibility="Hidden" Content="Enter" Cursor="Hand" HorizontalAlignment="Left" Margin="205,364,0,0" VerticalAlignment="Top" Width="160" Background="#FFF5EEEE" BorderBrush="#FFA45050" Click="EnterArea_Click" Height="68" FontSize="22" FontWeight="Bold"/>
         <Button Name="EnterTiendas" Visibility="Hidden" Content="Enter" Cursor="Hand" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="107" Background="#FFF5ECEC" BorderBrush="#FFA45050" Click="EnterTiendas_Click" Height="41" FontSize="22" FontWeight="Bold"/>
         <Button Name="EnterTiendasArea" Visibility="Hidden" Content="Enter" Cursor="Hand" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="107" Background="White" BorderBrush="#FFA45050" Click="EnterTiendasArea_Click" Height="41" FontSize="22" FontWeight="Bold"/>
-        <StackPanel Name="Panel" Visibility="Hidden" HorizontalAlignment="Left" Height="120" Margin="45,176,0,0" VerticalAlignment="Top" Width="411"  Background="{x:Null}"/>
+        <StackPanel Name="Panel" Visibility="Hidden" HorizontalAlignment="Left" Height="225" Margin="45,93,0,0" VerticalAlignment="Top" Width="509"  Background="{x:Null}"/>
         <Button Name ="EnterMall" Visibility="Hidden" Content="Enter" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterMall_Click"/>
         <ComboBox Name="TiendasGrid" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="TiendasGrid_SelectionChanged"/>
         <ComboBox Name="ReportesComboBox" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ReportesComboBox_SelectionChanged"/>
         <StackPanel Name="AllPanel" Visibility="Hidden" HorizontalAlignment="Left" Height="280" Margin="45,71,0,0" VerticalAlignment="Top" Width="1148"/>
-        <Label Name="Titulo_Principal" Content="Opciones De Mall" HorizontalContentAlignment="Center" FontSize="25"  HorizontalAlignment="Left" Foreground="#FFF9F9F9" Margin="45,93,0,0" VerticalAlignment="Top" Height="51" Width="267" TextOptions.TextHintingMode="Fixed"/>
+        <Image Name="ImagePisos" Visibility="Hidden" HorizontalAlignment="Left" Margin="554,20,0,20" Width="522" Source="C:\Users\vicen\OneDrive\Documentos\grupo_4\bin\ProyectoPOO3\ProyectoPOO3\Images\ImagePisos.jpg"/>
+
 
 
 

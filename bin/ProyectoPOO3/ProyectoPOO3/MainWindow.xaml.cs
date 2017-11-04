@@ -48,8 +48,9 @@ namespace ProyectoPOO3
             EnterMall.Visibility = Visibility.Hidden;
             ReportesComboBox.Visibility = Visibility.Hidden;
             AllPanel.Visibility = Visibility.Hidden;
-
-
+            Imagen_portada.Visibility = Visibility.Hidden;
+            Titulo_Principal.Visibility = Visibility.Hidden;
+            ImagePisos.Visibility = Visibility.Hidden;
         }
         private void Datos_Click(object sender, RoutedEventArgs e)
         {
@@ -57,6 +58,7 @@ namespace ProyectoPOO3
             PisosLabel.Visibility = Visibility.Visible;
             PisosText.Visibility = Visibility.Visible;
             EnterPisos.Visibility = Visibility.Visible;
+            ImagePisos.Visibility = Visibility.Visible;
 
         }
 
@@ -70,6 +72,7 @@ namespace ProyectoPOO3
         {
             if (Int32.TryParse(PisosText.Text, out int size))
             {
+                ImagePisos.Visibility = Visibility.Hidden;
                 EnterPisos.Visibility = Visibility.Hidden;
                 EnterAreas.Visibility = Visibility.Visible;
                 PisosText.Visibility = Visibility.Hidden;
@@ -231,6 +234,7 @@ namespace ProyectoPOO3
                     TextBox textBox = new TextBox
                     {
                         Width = 70,
+                        Height=50,
                         Text = tipo + " " + i,
                         Background = Brushes.White,
                         BorderBrush = null,
