@@ -14,19 +14,21 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Button Name="Boton" Visibility="Hidden" Content="Button" HorizontalAlignment="Left" Margin="93,228,0,0" VerticalAlignment="Top" Width="75" Background="#FF9E5A5A"/>
-        <TextBlock HorizontalAlignment="Left" Margin="45,20,0,0" TextWrapping="Wrap" Text="Dia 1" VerticalAlignment="Top" Foreground="White"/>
-        <Button Name="Reportes" Visibility="Hidden" Content="Reportes" HorizontalAlignment="Left" Margin="93,189,0,0" VerticalAlignment="Top" Width="75" Background="#FF9E5A5A"/>
-        <Button Name="Datos" Visibility="Hidden" Content="Simular" HorizontalAlignment="Left" Margin="93,148,0,0" VerticalAlignment="Top" Width="75" Background="#FFDE7272" Click="Datos_Click"/>
-        <Button Name="Plano" Visibility="Hidden" Content="Plano" HorizontalAlignment="Left" Margin="93,113,0,0" VerticalAlignment="Top" Width="75" Background="#FFB86666"/>
-        <Label Name="PisosLabel" Visibility="Visible" Content="Cantidad de Pisos" HorizontalAlignment="Left" Margin="128,107,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9"/>
-        <TextBox Name="PisosText" Visibility="Visible" HorizontalAlignment="Left" Height="23" Margin="246,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" TextChanged="TextBox_TextChanged" Background="{x:Null}" Foreground="White"/>
-        <Button Name="EnterPisos" Visibility="Visible" Content="Enter" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterPisos_Click"/>
+        <Label Name="DiaLabel" HorizontalAlignment="Left" Margin="45,20,0,0" Content="Dia 1" VerticalAlignment="Top" Foreground="White"/>
+        <Button Name="Reportes" Visibility="Visible" Content="Reportes" HorizontalAlignment="Left" Margin="93,189,0,0" VerticalAlignment="Top" Width="75" Background="#FF9E5A5A"/>
+        <Button Name="Datos" Visibility="Visible" Content="Simular" HorizontalAlignment="Left" Margin="93,148,0,0" VerticalAlignment="Top" Width="75" Background="#FFDE7272" Click="Datos_Click"/>
+        <Button Name="Plano" Visibility="Visible" Content="Plano" HorizontalAlignment="Left" Margin="93,113,0,0" VerticalAlignment="Top" Width="75" Background="#FFB86666" Click="Plano_Click"/>
+        <Label Name="PisosLabel" Visibility="Hidden" Content="Cantidad de Pisos" HorizontalAlignment="Left" Margin="128,107,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9"/>
+        <TextBox Name="PisosText" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="246,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" GotFocus="TextBox_TextChanged" Background="{x:Null}" Foreground="White"/>
+        <Button Name="EnterPisos" Visibility="Hidden" Content="Enter" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterPisos_Click" />
         <Button Name="EnterAreas" Visibility="Hidden" Content="Enter" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterArea_Click"/>
         <Button Name="EnterTiendas" Visibility="Hidden" Content="Enter" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterTiendas_Click"/>
         <Button Name="EnterTiendasArea" Visibility="Hidden" Content="Enter" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterTiendasArea_Click"/>
+        <StackPanel Name="Panel" Visibility="Hidden" HorizontalAlignment="Left" Height="120" Margin="45,176,0,0" VerticalAlignment="Top" Width="411"  Background="{x:Null}"/>
+        <Button Name ="EnterMall" Visibility="Hidden" Content="Enter" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterMall_Click"/>
+        <ComboBox Name="TiendasGrid" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390"/>
+
 
 
     </Grid>
 </Window>
-
-        
