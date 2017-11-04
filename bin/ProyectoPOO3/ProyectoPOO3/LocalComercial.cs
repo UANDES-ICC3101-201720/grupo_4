@@ -2,11 +2,10 @@
 {
     public class LocalComercial : Tienda
     {
-        public string Categoria;
 
-        public LocalComercial(string categoria, int volumen, string nombre, int preciominimo, int preciomaximo, Piso piso) : base(volumen, nombre, preciominimo, preciomaximo, piso)
+
+        public LocalComercial(string categoria, int volumen, string nombre, int preciominimo, int preciomaximo, Piso piso) : base(volumen, nombre, preciominimo, preciomaximo, piso, categoria)
         {
-            this.Categoria = categoria;
         }
     }
 }

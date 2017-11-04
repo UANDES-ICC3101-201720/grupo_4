@@ -18,6 +18,7 @@ namespace ProyectoPOO3
         public string reporte = "";
         public Mall mall;
         public int DiaActual = 1;
+        public int aux = 0;
 
         public Mall Mall { get => mall; set => mall = value; }
 
@@ -96,7 +97,7 @@ namespace ProyectoPOO3
             int d = random.Next(Entretencion.Count());
             int preciominimo = random.Next(2000);
             int preciomaximo = random.Next(2000, 10000);
-            int aux = 0;
+            
             if (Tipo[aux] == "Comercial")
             {
                 string nombre = StoresNames[random.Next(StoresNames.Count())];
@@ -104,6 +105,7 @@ namespace ProyectoPOO3
                 StoresNames.Remove(nombre);
                 piso.AgregarTienda(local, Area);
                 AllStores.Add(local);
+                MessageBox.Show(Tipo[aux]);
             }
             if (Tipo[aux] == "Entretencion")
             {
@@ -112,6 +114,8 @@ namespace ProyectoPOO3
                 StoresNames.Remove(nombre);
                 piso.AgregarTienda(local, Area);
                 AllStores.Add(local);
+                MessageBox.Show(Tipo[aux]);
+                aux = 0;
             }
             if (Tipo[aux] == "Comida")
             {
@@ -120,9 +124,13 @@ namespace ProyectoPOO3
                 StoresNames.Remove(nombre);
                 piso.AgregarTienda(local, Area);
                 AllStores.Add(local);
-                aux = 0;
+                MessageBox.Show(Tipo[aux]);
+                
+                
             }
+            
             aux += 1;
+            
 
         }
         public void EntradaAlMall(List<Cliente> Clientes, Mall mall)

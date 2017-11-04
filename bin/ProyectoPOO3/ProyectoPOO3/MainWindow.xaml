@@ -29,6 +29,7 @@
         <ComboBox Name="TiendasGrid" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="TiendasGrid_SelectionChanged"/>
         <ComboBox Name="ReportesComboBox" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ReportesComboBox_SelectionChanged"/>
         <StackPanel Name="AllPanel" Visibility="Hidden" HorizontalAlignment="Left" Height="280" Margin="45,71,0,0" VerticalAlignment="Top" Width="1148"/>
+        <Button Content="Inicio" Visibility="Hidden" Name="Back" HorizontalAlignment="Left" Margin="587,642,0,0" VerticalAlignment="Top" Width="72" Height="24" Click="Back_Click"/>
 
 
 

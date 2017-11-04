@@ -8,6 +8,7 @@ namespace ProyectoPOO3
         public int Volumen;
         public Piso Piso;
         public string Nombre;
+        public string Categoria;
         public int CantidadTrabajadores;
         public int PrecioMinimo;
         public int PrecioMaximo;
@@ -17,7 +18,7 @@ namespace ProyectoPOO3
         public int ClientesDiaAnterior;
         public int GananciaEfectiva;
         public List<int> GananciasDiarias;
-        public Tienda(int volumen, string nombre, int PrecioMinimo, int PrecioMaximo, Piso Piso)
+        public Tienda(int volumen, string nombre, int PrecioMinimo, int PrecioMaximo, Piso Piso,string Categoria)
         {
             this.Piso = Piso;
             this.Volumen = volumen;
@@ -31,6 +32,7 @@ namespace ProyectoPOO3
             this.Trabajadores = new List<Trabajadores>();
             this.GananciaEfectiva = 0;
             this.GananciasDiarias = new List<int>();
+            this.Categoria = Categoria;
         }
         public void AgregarTrabajador(Trabajadores Trabajador)
         {
