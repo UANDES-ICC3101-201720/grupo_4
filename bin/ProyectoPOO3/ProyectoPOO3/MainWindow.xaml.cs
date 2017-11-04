@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Controls;
-using System.Threading;
-using System.Data;
+using System.Windows.Media;
 
 namespace ProyectoPOO3
 {
@@ -17,6 +15,7 @@ namespace ProyectoPOO3
         List<int> pisos = new List<int>();
         List<TextBox> textboxes = new List<TextBox>();
         List<string> AuxReportesComboBox = new List<string>();
+        List<string> AuxTiendasComboBox = new List<string>();
         int cantidadpisos = 0;
         int pisoactual = 1;
         int cantidadtiendaspiso = 0;
@@ -48,9 +47,13 @@ namespace ProyectoPOO3
             EnterMall.Visibility = Visibility.Hidden;
             ReportesComboBox.Visibility = Visibility.Hidden;
             AllPanel.Visibility = Visibility.Hidden;
-            Imagen_portada.Visibility = Visibility.Hidden;
-            Titulo_Principal.Visibility = Visibility.Hidden;
+            TiendasGrid.Visibility = Visibility.Hidden;
+            Back.Visibility = Visibility.Hidden;
+            Imagen_Portada.Visibility = Visibility.Hidden;
             ImagePisos.Visibility = Visibility.Hidden;
+            Titulo_Principal.Visibility = Visibility.Hidden;
+
+
         }
         private void Datos_Click(object sender, RoutedEventArgs e)
         {
@@ -58,7 +61,6 @@ namespace ProyectoPOO3
             PisosLabel.Visibility = Visibility.Visible;
             PisosText.Visibility = Visibility.Visible;
             EnterPisos.Visibility = Visibility.Visible;
-            ImagePisos.Visibility = Visibility.Visible;
 
         }
 
@@ -72,7 +74,6 @@ namespace ProyectoPOO3
         {
             if (Int32.TryParse(PisosText.Text, out int size))
             {
-                ImagePisos.Visibility = Visibility.Hidden;
                 EnterPisos.Visibility = Visibility.Hidden;
                 EnterAreas.Visibility = Visibility.Visible;
                 PisosText.Visibility = Visibility.Hidden;
@@ -234,9 +235,8 @@ namespace ProyectoPOO3
                     TextBox textBox = new TextBox
                     {
                         Width = 70,
-                        Height=50,
                         Text = tipo + " " + i,
-                        Background = Brushes.White,
+                        Background = null,
                         BorderBrush = null,
                         Foreground = Brushes.White,
                         Margin = new Thickness(left_pos_panel_text, top_pos_panel_text, right_pos_panel_text, bottom_pos_panel_text),
@@ -280,7 +280,7 @@ namespace ProyectoPOO3
                         Width = 70,
                         Text = palabras[i],
                         Background = null,
-                        BorderBrush = Brushes.White,
+                        BorderBrush = null,
                         Foreground = Brushes.White,
                         Margin = new Thickness(left_pos_panel_text, top_pos_panel_text, right_pos_panel_text, bottom_pos_panel_text),
                         HorizontalContentAlignment = HorizontalAlignment.Center,
@@ -288,7 +288,7 @@ namespace ProyectoPOO3
                     };
                     textBox.GotFocus += TextBox_TextChanged;
                     textBox.Background = null;
-                    textBox.BorderBrush = Brushes.White;
+                    textBox.BorderBrush = null;
                     textBox.Foreground = Brushes.White;
                     textboxes.Add(textBox);
                     Panel.Children.Add(textBox);
@@ -381,11 +381,6 @@ namespace ProyectoPOO3
                     tiempogente += 1;
                 }
                 simulacion.mall.CerrarMall(simulacion.AllStores);
-                simulacion.DiaActual += 1;
-                if (simulacion.DiaActual <= 10)
-                {
-                    DiaLabel.Content = "Dia " + simulacion.DiaActual;
-                }
                 MessageBox.Show("Dia " + simulacion.DiaActual);
                 simulacion.Reporte1(simulacion.Mall, i);
                 simulacion.Reporte2(simulacion.Mall, i);
@@ -398,10 +393,14 @@ namespace ProyectoPOO3
                 simulacion.Mall.CerrarMall(simulacion.AllStores);
                 simulacion.Reportes.Add(simulacion.reporte);
                 simulacion.reporte = "";
-
-
-
+                simulacion.DiaActual += 1;
+                if (simulacion.DiaActual <= 10)
+                {
+                    DiaLabel.Content = "Dia " + simulacion.DiaActual;
+                }
             }
+            FillStoresGrid();
+            FillReportesComboBox();
             Reportes.Visibility = Visibility.Visible;
             Datos.Visibility = Visibility.Visible;
             Plano.Visibility = Visibility.Visible;
@@ -413,27 +412,26 @@ namespace ProyectoPOO3
         {
             HideBottons();
             TiendasGrid.Visibility = Visibility.Visible;
-            FillStoresGrid();
+            Back.Visibility = Visibility.Visible;
         }
         public void FillStoresGrid()
         {
             TiendasGrid.Items.Clear();
             foreach (Tienda tienda in simulacion.AllStores)
             {
-                TiendasGrid.Items.Add(tienda.Nombre + " " + tienda.GananciaEfectiva + " " + tienda.CantidadTrabajadores + " " + simulacion.AllStores.Count());
-
+                TiendasGrid.Items.Add(tienda.Nombre);
+                AuxTiendasComboBox.Add(tienda.Nombre);
             }
         }
         public void FillReportesComboBox()
         {
             int contador = 1;
             ReportesComboBox.Items.Clear();
-            MessageBox.Show(simulacion.Reportes.Count().ToString());
             foreach (string reporte in simulacion.Reportes)
             {
                 ReportesComboBox.Items.Add("Reporte para el Dia: " + contador.ToString());
-                contador += 1;
                 AuxReportesComboBox.Add("Reporte para el Dia: " + contador.ToString());
+                contador += 1;
             }
             TiendasGrid.HorizontalContentAlignment = HorizontalAlignment.Center;
         }
@@ -441,20 +439,38 @@ namespace ProyectoPOO3
         private void Reportes_Click(object sender, RoutedEventArgs e)
         {
             HideBottons();
-            FillReportesComboBox();
             ReportesComboBox.Visibility = Visibility.Visible;
         }
 
         public void FillStackPanelWithInfo(int caso)
         {
-            if (caso==1)
+            AllPanel.Children.Clear();
+            if (caso == 1)
             {
+
+                int index = AuxReportesComboBox.IndexOf(ReportesComboBox.SelectedItem.ToString());
                 TextBlock textBlock = new TextBlock
                 {
-                    Text = simulacion.Reportes[AuxReportesComboBox.IndexOf(ReportesComboBox.SelectedItem.ToString())],
+                    Text = simulacion.Reportes[index],
                     Foreground = Brushes.White
                 };
                 AllPanel.Children.Add(textBlock);
+
+            }
+            if (caso == 2)
+            {
+
+                int index = AuxTiendasComboBox.IndexOf(TiendasGrid.SelectedItem.ToString());
+                Tienda TiendaSelected = simulacion.AllStores[index];
+                TextBlock textBlock = new TextBlock
+                {
+                    Text = "Nombre: " + TiendaSelected.Nombre + "\nCantidad de Empleados: " + TiendaSelected.CantidadTrabajadores + "\nCategoria: " + TiendaSelected.Categoria + "\nPiso: " + TiendaSelected.Piso.numero + "\nArea: " + TiendaSelected.Volumen + "\nPrecio Minimio: " + TiendaSelected.PrecioMinimo + "\nPrecio Maximo: " + TiendaSelected.PrecioMaximo,
+                    Width = 150,
+                    Foreground = Brushes.White
+                };
+                AllPanel.Children.Add(textBlock);
+
+                AllPanel.Visibility = Visibility.Visible;
             }
         }
         private void ReportesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -462,11 +478,23 @@ namespace ProyectoPOO3
             HideBottons();
             FillStackPanelWithInfo(1);
             AllPanel.Visibility = Visibility.Visible;
+            Back.Visibility = Visibility.Visible;
         }
 
         private void TiendasGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            HideBottons();
+            TiendasGrid.Visibility = Visibility.Visible;
+            Back.Visibility = Visibility.Visible;
+            FillStackPanelWithInfo(2);
+        }
 
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            HideBottons();
+            Reportes.Visibility = Visibility.Visible;
+            Plano.Visibility = Visibility.Visible;
+            Datos.Visibility = Visibility.Visible;
         }
     }
 }

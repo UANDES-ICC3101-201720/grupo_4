@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
 using System.Threading;
 
 namespace ProyectoPOO3
@@ -18,9 +16,8 @@ namespace ProyectoPOO3
         public string reporte = "";
         public Mall mall;
         public int DiaActual = 1;
-
+        public int aux = 0;
         public Mall Mall { get => mall; set => mall = value; }
-
         public void CrearClientes(List<string> Nombres, List<Tienda> Tiendas, List<Piso> Pisos)
         {
             Random random = new Random();
@@ -64,7 +61,8 @@ namespace ProyectoPOO3
             foreach (Tienda tienda in Tiendas)
             {
                 Random random = new Random();
-                int MaxTrabajadores = random.Next(10);
+                Thread.Sleep(10);
+                int MaxTrabajadores = random.Next(5, 15);
                 for (int i = 0; i <= MaxTrabajadores; i++)
                 {
                     string nombre = Nombres[random.Next(Nombres.Count())];
@@ -84,8 +82,6 @@ namespace ProyectoPOO3
 
         public void CrearLocalesPorPiso(int Area, Piso piso)
         {
-
-
             List<string> Comercial = new List<string> { "Ropa", "Hogar", "Alimento", "Ferreteria", "Tecnologia" };
             List<string> Comida = new List<string> { "Rapida", "Restaurant" };
             List<string> Entretencion = new List<string> { "Cine", "Juegos", "Bowling" };
@@ -94,9 +90,10 @@ namespace ProyectoPOO3
             int b = random.Next(Comercial.Count());
             int c = random.Next(Comida.Count());
             int d = random.Next(Entretencion.Count());
+            Thread.Sleep(10);
             int preciominimo = random.Next(2000);
             int preciomaximo = random.Next(2000, 10000);
-            int aux = 0;
+
             if (Tipo[aux] == "Comercial")
             {
                 string nombre = StoresNames[random.Next(StoresNames.Count())];
@@ -112,6 +109,7 @@ namespace ProyectoPOO3
                 StoresNames.Remove(nombre);
                 piso.AgregarTienda(local, Area);
                 AllStores.Add(local);
+                aux = 0;
             }
             if (Tipo[aux] == "Comida")
             {
@@ -120,10 +118,8 @@ namespace ProyectoPOO3
                 StoresNames.Remove(nombre);
                 piso.AgregarTienda(local, Area);
                 AllStores.Add(local);
-                aux = 0;
             }
             aux += 1;
-
         }
         public void EntradaAlMall(List<Cliente> Clientes, Mall mall)
         {
