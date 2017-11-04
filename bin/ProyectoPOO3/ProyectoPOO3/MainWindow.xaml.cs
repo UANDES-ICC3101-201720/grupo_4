@@ -48,7 +48,7 @@ namespace ProyectoPOO3
             EnterMall.Visibility = Visibility.Hidden;
             ReportesComboBox.Visibility = Visibility.Hidden;
             AllPanel.Visibility = Visibility.Hidden;
-
+            Titulo_Principal.Visibility = Visibility.Hidden;
 
         }
         private void Datos_Click(object sender, RoutedEventArgs e)
