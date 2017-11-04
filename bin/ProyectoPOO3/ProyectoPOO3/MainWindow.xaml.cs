@@ -35,7 +35,7 @@ namespace ProyectoPOO3
         {
             Panel.Visibility = Visibility.Hidden;
             Datos.Visibility = Visibility.Hidden;
-            Boton.Visibility = Visibility.Hidden;
+            PassDay.Visibility = Visibility.Hidden;
             Reportes.Visibility = Visibility.Hidden;
             Plano.Visibility = Visibility.Hidden;
             PisosLabel.Visibility = Visibility.Hidden;
@@ -306,6 +306,7 @@ namespace ProyectoPOO3
             HideBottons();
             DiaLabel.Visibility = Visibility.Visible;
             IniciarMall();
+            Program(simulacion.mall.Horas);
         }
 
         public void IniciarMall()
@@ -338,70 +339,72 @@ namespace ProyectoPOO3
             if (valido)
             {
                 simulacion.Mall = new Mall(simulacion.AllFloors.Count(), horas, dinero);
-                Program(horas);
+                simulacion.CrearTrabajadores(simulacion.PeopleNames, simulacion.AllStores);
+                FillStoresGrid();
             }
 
         }
         public void Program(int horas)
-        {
-            simulacion.CrearTrabajadores(simulacion.PeopleNames, simulacion.AllStores);
+        {           
             HideBottons();
-            for (int i = 1; i <= 10; i++)
+            simulacion.mall.AbrirMall(simulacion.AllStores);
+            simulacion.Clientes.Clear();
+            simulacion.CrearClientes(simulacion.PeopleNames, simulacion.AllStores, simulacion.AllFloors);
+            int minutos = horas * 60;
+            int tiempogente = 0;
+            for (int j = 0; j < minutos; j++)
             {
-                simulacion.mall.AbrirMall(simulacion.AllStores);
-                simulacion.Clientes.Clear();
-                simulacion.CrearClientes(simulacion.PeopleNames, simulacion.AllStores, simulacion.AllFloors);
-                int minutos = horas * 60;
-                int tiempogente = 0;
-                for (int j = 0; j < minutos; j++)
+                if (tiempogente == 4)
                 {
-                    if (tiempogente == 4)
+                    for (int k = 0; k < 9; k++)
                     {
-                        for (int k = 0; k < 9; k++)
+                        Random random = new Random();
+                        int cliente1 = random.Next(simulacion.Clientes.Count());
+                        try
                         {
-                            Random random = new Random();
-                            int cliente1 = random.Next(simulacion.Clientes.Count());
-                            try
-                            {
-                                simulacion.Clientes[cliente1].EntrarMall(simulacion.Clientes[cliente1].Plan.Tiendas[0].Piso, simulacion.mall);
-                                simulacion.Clientes[cliente1].RecorrerPlan(simulacion.Clientes[cliente1].Plan);
-                                simulacion.Clientes.Remove(simulacion.Clientes[cliente1]);
-                            }
-                            catch (Exception)
-                            {
-
-
-                            }
+                            simulacion.Clientes[cliente1].EntrarMall(simulacion.Clientes[cliente1].Plan.Tiendas[0].Piso, simulacion.mall);
+                            simulacion.Clientes[cliente1].RecorrerPlan(simulacion.Clientes[cliente1].Plan);
+                            simulacion.Clientes.Remove(simulacion.Clientes[cliente1]);
                         }
+                        catch (Exception)
+                        {
 
-                        tiempogente = 0;
+
+                        }
                     }
-                    tiempogente += 1;
+
+                    tiempogente = 0;
                 }
-                simulacion.mall.CerrarMall(simulacion.AllStores);
-                MessageBox.Show("Dia " + simulacion.DiaActual);
-                simulacion.Reporte1(simulacion.Mall, i);
-                simulacion.Reporte2(simulacion.Mall, i);
-                simulacion.Reporte3(simulacion.AllStores, i);
-                simulacion.Reporte4(simulacion.AllStores, i);
-                simulacion.Reporte5(simulacion.AllStores);
-                simulacion.Reporte6(simulacion.AllStores);
-                simulacion.Reporte7(simulacion.AllStores, i);
-                simulacion.Reporte8(simulacion.AllStores);
-                simulacion.Mall.CerrarMall(simulacion.AllStores);
-                simulacion.Reportes.Add(simulacion.reporte);
-                simulacion.reporte = "";
-                simulacion.DiaActual += 1;
-                if (simulacion.DiaActual <= 10)
-                {
-                    DiaLabel.Content = "Dia " + simulacion.DiaActual;
-                }
+                tiempogente += 1;
             }
-            FillStoresGrid();
-            FillReportesComboBox();
-            Reportes.Visibility = Visibility.Visible;
-            Datos.Visibility = Visibility.Visible;
-            Plano.Visibility = Visibility.Visible;
+            simulacion.mall.CerrarMall(simulacion.AllStores);
+            simulacion.Reporte1(simulacion.Mall, simulacion.DiaActual);
+            simulacion.Reporte2(simulacion.Mall, simulacion.DiaActual);
+            simulacion.Reporte3(simulacion.AllStores, simulacion.DiaActual);
+            simulacion.Reporte4(simulacion.AllStores, simulacion.DiaActual);
+            simulacion.Reporte5(simulacion.AllStores);
+            simulacion.Reporte6(simulacion.AllStores);
+            simulacion.Reporte7(simulacion.AllStores, simulacion.DiaActual);
+            simulacion.Reporte8(simulacion.AllStores);
+            simulacion.Mall.CerrarMall(simulacion.AllStores);
+            simulacion.Reportes.Add(simulacion.reporte);
+            simulacion.reporte = "";
+            FillReportesComboBox(simulacion.DiaActual);           
+            if (simulacion.DiaActual <= 10)
+            {
+                DiaLabel.Content = "Dia " + simulacion.DiaActual;
+                Reportes.Visibility = Visibility.Visible;
+                PassDay.Visibility = Visibility.Visible;
+                Plano.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Reportes.Visibility = Visibility.Visible;
+                Datos.Visibility = Visibility.Visible;
+                Plano.Visibility = Visibility.Visible;
+            }
+            simulacion.DiaActual += 1;
+
 
 
         }
@@ -421,16 +424,10 @@ namespace ProyectoPOO3
                 AuxTiendasComboBox.Add(tienda.Nombre);
             }
         }
-        public void FillReportesComboBox()
+        public void FillReportesComboBox(int Dia)
         {
-            int contador = 1;
-            ReportesComboBox.Items.Clear();
-            foreach (string reporte in simulacion.Reportes)
-            {
-                ReportesComboBox.Items.Add("Reporte para el Dia: " + contador.ToString());
-                AuxReportesComboBox.Add("Reporte para el Dia: " + contador.ToString());
-                contador += 1;
-            }
+            ReportesComboBox.Items.Add("Reporte para el Dia: " + Dia.ToString());
+            AuxReportesComboBox.Add("Reporte para el Dia: " + Dia.ToString());
             TiendasGrid.HorizontalContentAlignment = HorizontalAlignment.Center;
         }
 
@@ -490,9 +487,23 @@ namespace ProyectoPOO3
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             HideBottons();
-            Reportes.Visibility = Visibility.Visible;
-            Plano.Visibility = Visibility.Visible;
-            Datos.Visibility = Visibility.Visible;
+            if (simulacion.DiaActual<10)
+            {
+                Reportes.Visibility = Visibility.Visible;
+                Plano.Visibility = Visibility.Visible;
+                PassDay.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Reportes.Visibility = Visibility.Visible;
+                Plano.Visibility = Visibility.Visible;
+                Datos.Visibility = Visibility.Visible;
+            }           
+        }
+
+        private void PassDay_Click(object sender, RoutedEventArgs e)
+        {
+            Program(simulacion.mall.Horas);
         }
     }
 }
