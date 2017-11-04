@@ -232,7 +232,7 @@ namespace ProyectoPOO3
                     {
                         Width = 70,
                         Text = tipo + " " + i,
-                        Background = Brushes.White,
+                        Background = null,
                         BorderBrush = null,
                         Foreground = Brushes.White,
                         Margin = new Thickness(left_pos_panel_text, top_pos_panel_text, right_pos_panel_text, bottom_pos_panel_text),
@@ -276,7 +276,7 @@ namespace ProyectoPOO3
                         Width = 70,
                         Text = palabras[i],
                         Background = null,
-                        BorderBrush = Brushes.White,
+                        BorderBrush = null,
                         Foreground = Brushes.White,
                         Margin = new Thickness(left_pos_panel_text, top_pos_panel_text, right_pos_panel_text, bottom_pos_panel_text),
                         HorizontalContentAlignment = HorizontalAlignment.Center,
@@ -284,7 +284,7 @@ namespace ProyectoPOO3
                     };
                     textBox.GotFocus += TextBox_TextChanged;
                     textBox.Background = null;
-                    textBox.BorderBrush = Brushes.White;
+                    textBox.BorderBrush = null;
                     textBox.Foreground = Brushes.White;
                     textboxes.Add(textBox);
                     Panel.Children.Add(textBox);
