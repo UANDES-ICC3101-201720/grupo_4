@@ -49,8 +49,6 @@ namespace ProyectoPOO3
             AllPanel.Visibility = Visibility.Hidden;
             TiendasGrid.Visibility = Visibility.Hidden;
             Back.Visibility = Visibility.Hidden;
-            Imagen_Portada.Visibility = Visibility.Hidden;
-            ImagePisos.Visibility = Visibility.Hidden;
             Titulo_Principal.Visibility = Visibility.Hidden;
 
 

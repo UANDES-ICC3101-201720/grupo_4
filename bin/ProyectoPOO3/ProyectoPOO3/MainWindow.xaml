@@ -28,10 +28,7 @@
         <ComboBox Name="ReportesComboBox" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ReportesComboBox_SelectionChanged"/>
         <StackPanel Name="AllPanel" Visibility="Hidden" HorizontalAlignment="Left" Height="280" Margin="45,71,0,0" VerticalAlignment="Top" Width="1148"/>
         <Button Content="Inicio" Name="Back" Visibility="Hidden" HorizontalAlignment="Left" Margin="588,686,0,0" VerticalAlignment="Top" Width="76" Click="Back_Click"/>
-        <Image Name="Imagen_Portada" Visibility="Visible" Margin="393,125,79,119" Source="MallImage.jpeg" Stretch="Fill"/>
-        <Image Name="ImagePisos" Visibility="Hidden" Margin="588,71,196,83" Source="ImagePisos.jpeg" Stretch="Fill"/>
-
-
+        
 
 
     </Grid>
