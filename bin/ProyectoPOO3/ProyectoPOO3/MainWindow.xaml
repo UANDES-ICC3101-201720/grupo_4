@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoPOO3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="800" Width="1280">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -14,10 +14,10 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Button Name="Boton" Visibility="Hidden" Content="Button" HorizontalAlignment="Left" Margin="93,228,0,0" VerticalAlignment="Top" Width="75" Background="#FF9E5A5A"/>
-        <Label Name="DiaLabel" HorizontalAlignment="Left" Margin="45,20,0,0" Content="Dia 1" VerticalAlignment="Top" Foreground="White"/>
-        <Button Name="Reportes" Visibility="Visible" Content="Reportes" HorizontalAlignment="Left" Margin="93,189,0,0" VerticalAlignment="Top" Width="75" Background="#FF9E5A5A"/>
-        <Button Name="Datos" Visibility="Visible" Content="Simular" HorizontalAlignment="Left" Margin="93,148,0,0" VerticalAlignment="Top" Width="75" Background="#FFDE7272" Click="Datos_Click"/>
-        <Button Name="Plano" Visibility="Visible" Content="Plano" HorizontalAlignment="Left" Margin="93,113,0,0" VerticalAlignment="Top" Width="75" Background="#FFB86666" Click="Plano_Click"/>
+        <Label Name="DiaLabel" HorizontalAlignment="Left" FontSize="20" Margin="45,20,0,0" Content="Dia 1" VerticalAlignment="Top" Foreground="White"/>
+        <Button Name="Reportes" Visibility="Visible" Content="Reportes" FontSize="20" HorizontalAlignment="Left" Margin="93,240,0,0" VerticalAlignment="Top" Width="148" Background="#FF9E5A5A" Click="Reportes_Click" Height="34"/>
+        <Button Name="Datos" Visibility="Visible" Content="Simular" FontSize="20" HorizontalAlignment="Left" Margin="93,176,0,0" VerticalAlignment="Top" Width="148" Background="#FFDE7272" Click="Datos_Click" Height="33"/>
+        <Button Name="Plano" Visibility="Visible" Content="Plano" HorizontalAlignment="Left" Margin="93,113,0,0" VerticalAlignment="Top" FontSize="20" Width="148" Background="#FFB86666" Click="Plano_Click" Height="33"/>
         <Label Name="PisosLabel" Visibility="Hidden" Content="Cantidad de Pisos" HorizontalAlignment="Left" Margin="128,107,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9"/>
         <TextBox Name="PisosText" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="246,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" GotFocus="TextBox_TextChanged" Background="{x:Null}" Foreground="White"/>
         <Button Name="EnterPisos" Visibility="Hidden" Content="Enter" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterPisos_Click" />
@@ -26,7 +26,9 @@
         <Button Name="EnterTiendasArea" Visibility="Hidden" Content="Enter" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterTiendasArea_Click"/>
         <StackPanel Name="Panel" Visibility="Hidden" HorizontalAlignment="Left" Height="120" Margin="45,176,0,0" VerticalAlignment="Top" Width="411"  Background="{x:Null}"/>
         <Button Name ="EnterMall" Visibility="Hidden" Content="Enter" HorizontalAlignment="Left" Margin="226,219,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterMall_Click"/>
-        <ComboBox Name="TiendasGrid" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390"/>
+        <ComboBox Name="TiendasGrid" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="TiendasGrid_SelectionChanged"/>
+        <ComboBox Name="ReportesComboBox" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ReportesComboBox_SelectionChanged"/>
+        <StackPanel Name="AllPanel" Visibility="Hidden" HorizontalAlignment="Left" Height="280" Margin="45,71,0,0" VerticalAlignment="Top" Width="1148"/>
 
 
 
