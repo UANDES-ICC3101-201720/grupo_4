@@ -174,7 +174,7 @@ namespace ProyectoPOO3
                 {
                     HideBottons();
                     EnterMall.Visibility = Visibility.Visible;
-                    PisosLabel.Content = "Ingrese las horas que funcionara el mall\ny el dinero inicial que tiene.";
+                    PisosLabel.Content = "Ingrese\nHoras que funcionara el Mall\nDinero inicial del Mall\nPrecio Metro Cuadrado\n Sueldo Promedio Empleados";
                     FillListBox(0, "", 1);
                     Panel.Visibility = Visibility.Visible;
                     PisosLabel.Visibility = Visibility.Visible;
@@ -270,8 +270,8 @@ namespace ProyectoPOO3
                 int left_pos_panel_text = -200;
                 textboxes.Clear();
                 Panel.Children.Clear();
-                string[] palabras = { "Dinero", "Mall" };
-                for (int i = 0; i < 2; i++)
+                string[] palabras = { "Dinero", "Mall","Precio Metro Cuadrado","Sueldos Promedio" };
+                for (int i = 0; i < 4; i++)
                 {
                     TextBox textBox = new TextBox
                     {
@@ -313,32 +313,49 @@ namespace ProyectoPOO3
         {
             int dinero = 0;
             int horas = 0;
-            int contador = 0;
+            int precioMC = 0;
+            int sueldos = 0;
             bool valido = true;
-            foreach (TextBox textBox in textboxes)
+            if (Int32.TryParse(textboxes[0].Text, out int j))
             {
-                if (Int32.TryParse(textBox.Text, out int j))
-                {
-                    if (contador == 0)
-                    {
-                        dinero = j;
-                        contador += 1;
-                    }
-                    else
-                    {
-                        horas = j;
-                        contador -= 1;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No ingreso datos validos");
-                    valido = false;
-                }
+                dinero = j;
             }
+            else
+            {
+                MessageBox.Show("No ingreso datos validos");
+                valido = false;
+            }
+            if (Int32.TryParse(textboxes[1].Text, out int l))
+            {
+                horas = l;
+            }
+            else
+            {
+                MessageBox.Show("No ingreso datos validos");
+                valido = false;
+            }
+            if (Int32.TryParse(textboxes[2].Text, out int m))
+            {
+                precioMC = m;
+            }
+            else
+            {
+                MessageBox.Show("No ingreso datos validos");
+                valido = false;
+            }
+            if (Int32.TryParse(textboxes[3].Text, out int o))
+            {
+                sueldos = o;
+            }
+            else
+            {
+                MessageBox.Show("No ingreso datos validos");
+                valido = false;
+            }
+
             if (valido)
             {
-                simulacion.Mall = new Mall(simulacion.AllFloors.Count(), horas, dinero);
+                simulacion.Mall = new Mall(simulacion.AllFloors.Count(), horas, dinero,precioMC,sueldos);
                 simulacion.CrearTrabajadores(simulacion.PeopleNames, simulacion.AllStores);
                 FillStoresGrid();
             }
@@ -354,7 +371,7 @@ namespace ProyectoPOO3
             int tiempogente = 0;
             for (int j = 0; j < minutos; j++)
             {
-                if (tiempogente == 4)
+                if (tiempogente == 4 & j<minutos-30)
                 {
                     for (int k = 0; k < 9; k++)
                     {
@@ -392,18 +409,22 @@ namespace ProyectoPOO3
             FillReportesComboBox(simulacion.DiaActual);           
             if (simulacion.DiaActual < 10)
             {
+                
                 DiaLabel.Content = "Dia " + simulacion.DiaActual;
+                simulacion.DiaActual += 1;
                 Reportes.Visibility = Visibility.Visible;
                 PassDay.Visibility = Visibility.Visible;
                 Plano.Visibility = Visibility.Visible;
             }
             else
             {
+                DiaLabel.Content = "Dia 10";
                 Reportes.Visibility = Visibility.Visible;
                 Datos.Visibility = Visibility.Visible;
                 Plano.Visibility = Visibility.Visible;
             }
-            simulacion.DiaActual += 1;
+            
+
 
 
 
@@ -463,10 +484,11 @@ namespace ProyectoPOO3
                         TiendaSelected = tienda;
                     }
                 }
+                int gananciastotales = TiendaSelected.GananciasTotales();
                 TextBlock textBlock = new TextBlock
                 {
-                    Text = "Nombre: " + TiendaSelected.Nombre + "\nCantidad de Empleados: " + TiendaSelected.CantidadTrabajadores + "\nCategoria: " + TiendaSelected.Categoria + "\nPiso: " + TiendaSelected.Piso.numero + "\nArea: " + TiendaSelected.Volumen + "\nPrecio Minimio: " + TiendaSelected.PrecioMinimo + "\nPrecio Maximo: " + TiendaSelected.PrecioMaximo,
-                    Width = 150,
+                    Text = "Nombre: " + TiendaSelected.Nombre + "\nCantidad de Empleados: " + TiendaSelected.CantidadTrabajadores + "\nCategoria: " + TiendaSelected.Categoria + "\nPiso: " + TiendaSelected.Piso.numero + "\nArea: " + TiendaSelected.Volumen + "\nPrecio Minimio: " + TiendaSelected.PrecioMinimo + "\nPrecio Maximo: " + TiendaSelected.PrecioMaximo + "\nCosto Arriendo: "+ TiendaSelected.Volumen*simulacion.mall.PrecioMetroCuadrado+"\nCostos Sueldos: " + TiendaSelected.CantidadTrabajadores*simulacion.mall.SueldosPromedio + "\nVenta este dia: "+TiendaSelected.VentasDiarias[simulacion.DiaActual-1]+"\nGanancia este dia: "+ TiendaSelected.GananciasDiarias[simulacion.DiaActual - 1]+"\nGanancias totales hasta hoy:\n"+gananciastotales,
+                    Width = 200,
                     Foreground = Brushes.White
                 };
                 AllPanel.Children.Add(textBlock);

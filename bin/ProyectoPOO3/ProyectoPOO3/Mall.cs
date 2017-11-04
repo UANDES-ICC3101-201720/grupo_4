@@ -9,16 +9,20 @@ namespace ProyectoPOO3
         public int MinutoActual;
         public int Dinero;
         public int TotalDeClientes = 0;
+        public int SueldosPromedio;
+        public int PrecioMetroCuadrado;
         public List<int> ClientesPorDia;
         public void Apertura() { }
         public void Cierre() { }
-        public Mall(int Pisos, int Horas, int Dinero)
+        public Mall(int Pisos, int Horas, int Dinero,int PrecioMetroCuadrado, int SueldosPromedio)
         {
             this.Pisos = Pisos;
             this.Horas = Horas;
             this.MinutoActual = 0;
             this.Dinero = Dinero;
             this.ClientesPorDia = new List<int>();
+            this.PrecioMetroCuadrado = PrecioMetroCuadrado;
+            this.SueldosPromedio = SueldosPromedio;
         }
         public void RecepcionCliente()
         {
@@ -36,7 +40,7 @@ namespace ProyectoPOO3
         {
             foreach (Tienda tienda in Tiendas)
             {
-                tienda.TerminarDia();
+                tienda.TerminarDia(this);
 
             }
         }

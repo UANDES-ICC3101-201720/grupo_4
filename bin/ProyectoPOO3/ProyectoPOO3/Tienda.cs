@@ -17,6 +17,8 @@ namespace ProyectoPOO3
         public int ClientesDiaAnterior;
         public int GananciaEfectiva;
         public string Categoria;
+        public int Ventas;
+        public List<int> VentasDiarias;
         public List<int> GananciasDiarias;
         public Tienda(int volumen, string nombre, int PrecioMinimo, int PrecioMaximo, Piso Piso, string categoria)
         {
@@ -33,6 +35,8 @@ namespace ProyectoPOO3
             this.GananciaEfectiva = 0;
             this.GananciasDiarias = new List<int>();
             this.Categoria = categoria;
+            this.Ventas = 0;
+            this.VentasDiarias = new List<int>();
         }
         public void AgregarTrabajador(Trabajadores Trabajador)
         {
@@ -45,14 +49,16 @@ namespace ProyectoPOO3
             CMAX = ClientesDiaAnterior + AreaLocal / 10 * (Math.Max(100 - (PrecioMinimo + PrecioMinimo) / 2, 0) / 100) * CantidadTrabajadores;
             return CMAX;
         }
-        public void GananciaLocal(int PrecioMinimo, int PrecioMaximo, int Volumen, int CantidadTrabajadores, int ClientesDiaAnterior)
+        public void GananciaLocal(int PrecioMinimo, int PrecioMaximo, int Volumen, int CantidadTrabajadores, int ClientesDiaAnterior, Mall mall)
         {
             Random random = new Random();
             int CMAX = ClientesPorDia(CantidadTrabajadores, ClientesDiaAnterior, Volumen, PrecioMinimo, PrecioMaximo);
-            int CostoArriendo = Volumen * 100; // Dado que en el enunciado no dice cuanto es el Precio Arriendo por metro cuadrado asumimos que es 100.
+            int CostoArriendo = Volumen * mall.PrecioMetroCuadrado; // Dado que en el enunciado no dice cuanto es el Precio Arriendo por metro cuadrado asumimos que es 100.
             int V = random.Next(PrecioMinimo, PrecioMaximo);
-            int Ganancia = V * CMAX - (CantidadTrabajadores + CostoArriendo);
+            int Ganancia = V * CMAX - (CantidadTrabajadores + CostoArriendo) - CantidadTrabajadores * mall.SueldosPromedio;
             GananciaEfectiva = Ganancia;
+            int Venta = V * CMAX - (CantidadTrabajadores + CostoArriendo);
+            Ventas = Venta;
         }
         public void SumarCliente()
         {
@@ -62,11 +68,21 @@ namespace ProyectoPOO3
         {
             ContadorClientes = 0;
         }
-        public void TerminarDia()
+        public void TerminarDia(Mall mall)
         {
-            this.GananciaLocal(this.PrecioMinimo, this.PrecioMaximo, this.Volumen, this.CantidadTrabajadores, this.ClientesDiaAnterior);
+            this.GananciaLocal(this.PrecioMinimo, this.PrecioMaximo, this.Volumen, this.CantidadTrabajadores, this.ClientesDiaAnterior, mall);
             GananciasDiarias.Add(GananciaEfectiva);
+            VentasDiarias.Add(Ventas);
             ClientesDiaAnterior = ContadorClientes;
+        }
+        public int GananciasTotales()
+        {
+            int gananciastotales = 0;
+            foreach (int ganancia in this.GananciasDiarias)
+            {
+                gananciastotales += ganancia;
+            }
+            return gananciastotales;
         }
     }
 }
