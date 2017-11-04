@@ -390,7 +390,7 @@ namespace ProyectoPOO3
             simulacion.Reportes.Add(simulacion.reporte);
             simulacion.reporte = "";
             FillReportesComboBox(simulacion.DiaActual);           
-            if (simulacion.DiaActual <= 10)
+            if (simulacion.DiaActual < 10)
             {
                 DiaLabel.Content = "Dia " + simulacion.DiaActual;
                 Reportes.Visibility = Visibility.Visible;
@@ -454,9 +454,15 @@ namespace ProyectoPOO3
             }
             if (caso == 2)
             {
-
-                int index = AuxTiendasComboBox.IndexOf(TiendasGrid.SelectedItem.ToString());
-                Tienda TiendaSelected = simulacion.AllStores[index];
+                string NombreTienda = TiendasGrid.SelectedItem.ToString();
+                Tienda TiendaSelected = simulacion.AllStores[0];
+                foreach (Tienda tienda in simulacion.AllStores)
+                {
+                    if (tienda.Nombre==NombreTienda)
+                    {
+                        TiendaSelected = tienda;
+                    }
+                }
                 TextBlock textBlock = new TextBlock
                 {
                     Text = "Nombre: " + TiendaSelected.Nombre + "\nCantidad de Empleados: " + TiendaSelected.CantidadTrabajadores + "\nCategoria: " + TiendaSelected.Categoria + "\nPiso: " + TiendaSelected.Piso.numero + "\nArea: " + TiendaSelected.Volumen + "\nPrecio Minimio: " + TiendaSelected.PrecioMinimo + "\nPrecio Maximo: " + TiendaSelected.PrecioMaximo,
