@@ -175,5 +175,10 @@ namespace ProyectoPOO3
                 MessageBox.Show("No ingreso un numero");
             }
         }
+
+        private void Plano_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
