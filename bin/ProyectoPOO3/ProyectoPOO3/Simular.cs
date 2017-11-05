@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 
@@ -13,6 +14,9 @@ namespace ProyectoPOO3
         public List<Cliente> Clientes = new List<Cliente>();
         public List<string> StoresNames = new List<string> { "Accenture", "Wells Fargo", "Estee Lauder", "ING", "Dell", "Hyundai", "Allianz", "Lexus", "Mastercard", "Colgate", "Nintendo", "Home Depot", "UPS", "Kraft", "IKEA", "Nestle", "ESPN", "Facebook", "Mercedes-Benz", "BMW,Subway", "Porsche", "Dell", "Sony", "Rolex", "Bank of America", "Caterpillar", "Canon", "Zara", "Louis Vuitton", "Samsung", "McDonald’s", "Microsoft", "Apple", "Armani", "Versace", "Gucci", "Burberry", "Ermenegildo Zegna", "Omega", "Tiffany & Co.", "Dolce & Gabbana ", "Carolina Herrera", "Longchamp", "Salvatore Ferragamo", "Louis Vuitton", "Tory Burch, ", "Jimmy Choo", "Ralph Lauren", "Michael Kors", "Jumbo", "Abcdin", "Tricot", "Johnson", "La Polar", "Homecenter Sodimac", "Tottus", "Falabella", "Armani Exchange", "Banana Republic", "Hugo Boss", "The North Face", "Kipling", "Gap", "Swarovski ", "Zara", "H&M", "París", "Ripley", "Nike", "Rosen", "Colun", "Carozzi", "Soprole", "Nestle", "Teleton", "Iansa", "Cav", "Mac", "Burger King", "Lee", "OPV", "Place Vandome", "Farmacia Ahumada", "Lider", "Wallmart", "Sparta", "Doite", "Tip y Tap", "Asus", "MSI", "Columbia", "Ruby Tuesday", "Mr Jack", "LG", "Bianchi", "SHot", "Cuncuna", "Emporio de la rosa", "Lapiz Lopez ", "Sex Shop", "Lucas Bar", "We Play", "Aliexpress", "Latam", "Microplay", "Ripcurl", "CineHoyts", "Cineplanet", "Sushisan", "Maldito sushi", "Swaroski" };
         public List<string> Reportes = new List<string>();
+        public List<LocalComercial> AllComercialStores = new List<LocalComercial>();
+        public List<LocalComida> AllFoodStores = new List<LocalComida>();
+        public List<LocalEntretencion> AllFunStores = new List<LocalEntretencion>();
         public string reporte = "";
         public Mall mall;
         public int DiaActual = 1;
@@ -75,11 +79,10 @@ namespace ProyectoPOO3
         {
             for (int i = 1; i <= Cantidad; i++)
             {
-                Piso piso = new Piso(Area[i - 1], 100, i);
+                Piso piso = new Piso(Area[i - 1], i);
                 AllFloors.Add(piso);
             }
         }
-
         public void CrearLocalesPorPiso(int Area, Piso piso)
         {
             List<string> Comercial = new List<string> { "Ropa", "Hogar", "Alimento", "Ferreteria", "Tecnologia" };
@@ -256,7 +259,97 @@ namespace ProyectoPOO3
             }
             reporte += "El local con menor cantidad de clientes antendidos este dia fue " + LocalMin.Nombre + " con una cantidad de " + ClientesAtendidos.ToString() + " clientes" + "\n";
         }
+        public void CargarSimulacion(string path)
+        {
+            try
+            {
+                StreamReader streamReader = new StreamReader(path);
+                while (streamReader.Peek() >= 0)
+                {
+                    string linea = streamReader.ReadLine();
+                    List<string> datos = linea.Split(',').ToList();
+                    if (datos[0] == "Mall")
+                    {
+                        mall = new Mall(Convert.ToInt32(datos[1]), Convert.ToInt32(datos[2]), Convert.ToInt32(datos[3]), Convert.ToInt32(datos[4]), Convert.ToInt32(datos[5]));
+                    }
+                    if (datos[0] == "Piso")
+                    {
+                        Piso piso = new Piso(Convert.ToInt32(datos[1]), Convert.ToInt32(datos[2]));
+                        AllFloors.Add(piso);
+                    }
+                    if (datos[0] == "Local Comercial")
+                    {
+                        Piso piso1;
+                        foreach (Piso piso in AllFloors)
+                        {
+                            if (piso.numero == Convert.ToInt32(datos[6]))
+                            {
+                                piso1 = piso;
+                                LocalComercial local = new LocalComercial(datos[1], Convert.ToInt32(datos[2]), datos[3], Convert.ToInt32(datos[4]), Convert.ToInt32(datos[5]), piso1);
 
+                            }
+                        }
+                    }
+                    if (datos[0] == "Local Comida")
+                    {
+                        Piso piso1;
+                        foreach (Piso piso in AllFloors)
+                        {
+                            if (piso.numero == Convert.ToInt32(datos[6]))
+                            {
+                                piso1 = piso;
+                                LocalComida local = new LocalComida(datos[1], Convert.ToInt32(datos[2]), datos[3], Convert.ToInt32(datos[4]), Convert.ToInt32(datos[5]), piso1);
+
+                            }
+                        }
+                    }
+                    if (datos[0] == "Local Entretencion")
+                    {
+                        Piso piso1;
+                        foreach (Piso piso in AllFloors)
+                        {
+                            if (piso.numero == Convert.ToInt32(datos[6]))
+                            {
+                                piso1 = piso;
+                                LocalEntretencion local = new LocalEntretencion(datos[1], Convert.ToInt32(datos[2]), datos[3], Convert.ToInt32(datos[4]), Convert.ToInt32(datos[5]), piso1);
+
+                            }
+                        }
+                    }
+                }
+                streamReader.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void GuardarSimulacion(string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Create);
+            StreamWriter sr = new StreamWriter(path);
+            sr.WriteLine("Mall," + mall.Pisos + "," + mall.Horas + "," + mall.Dinero + "," + mall.PrecioMetroCuadrado + "," + mall.SueldosPromedio);
+            foreach (Piso piso in AllFloors)
+            {
+                sr.WriteLine("Piso," + piso.Area + "," + piso.numero);
+            }
+            foreach (LocalComercial tienda in AllComercialStores)
+            {
+                sr.WriteLine("Local Comercial," + tienda.Categoria + "," + tienda.Volumen + "," + tienda.Nombre + "," + tienda.PrecioMinimo + "," + tienda.PrecioMaximo + "," + tienda.Piso.numero);
+            }
+            foreach (LocalComida tienda in AllFoodStores)
+            {
+                sr.WriteLine("Local Comida," + tienda.Categoria + "," + tienda.Volumen + "," + tienda.Nombre + "," + tienda.PrecioMinimo + "," + tienda.PrecioMaximo + "," + tienda.Piso.numero);
+            }
+            foreach (LocalEntretencion tienda in AllFunStores)
+            {
+                sr.WriteLine("Local Entretencion," + tienda.Categoria + "," + tienda.Volumen + "," + tienda.Nombre + "," + tienda.PrecioMinimo + "," + tienda.PrecioMaximo + "," + tienda.Piso.numero);
+            }
+            sr.Close();
+            fs.Close();
+
+        }
     }
 
 }

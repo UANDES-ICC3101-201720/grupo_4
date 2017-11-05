@@ -9,14 +9,10 @@ namespace ProyectoPOO3
         public List<Tienda> Tiendas;
         public int Area;
         public int AreaOcupada;
-        public int Estacionamientos;
-        public int EstacionamientosOcupados;
-        public Piso(int Area, int Estacionamientos, int numero)
+        public Piso(int Area, int numero)
         {
             this.numero = numero;
             this.Area = Area;
-            this.Estacionamientos = Estacionamientos;
-            this.EstacionamientosOcupados = 0;
             this.Tiendas = new List<Tienda>();
             this.AreaOcupada = 0;
         }
