@@ -54,6 +54,7 @@ namespace ProyectoPOO3
             SimularSerializable.Visibility = Visibility.Hidden;
             GuardarArchivo.Visibility = Visibility.Hidden;
             salir.Visibility = Visibility.Hidden;
+            Titulo_Inicial.Visibility = Visibility.Hidden;
 
         }
         private void Datos_Click(object sender, RoutedEventArgs e)

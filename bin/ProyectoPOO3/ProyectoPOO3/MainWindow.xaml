@@ -7,9 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="750" Width="1280" WindowStyle="ThreeDBorderWindow">
     <Window.Background>
-        <ImageBrush Stretch="Uniform"/>
+        <ImageBrush Stretch="Uniform" />
     </Window.Background>
-    <Grid Background="#FF913A3A">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Capture001.jpg"/>
+        </Grid.Background>
         <Button Name="PassDay" Visibility="Hidden" Content="Siguente Dia" HorizontalAlignment="Left" Margin="45,361,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Height="70" BorderBrush="#FFF5E5E5" FontWeight="Bold" FontSize="25" Click="PassDay_Click" />
         <Label Name="DiaLabel" Visibility="Hidden" HorizontalAlignment="Left" FontSize="24" Margin="45,20,0,0" Content="Dia 1" VerticalAlignment="Top" Foreground="White" Cursor="Help" Height="46" Width="111" FontWeight="Bold"/>
         <Button Name="GuardarArchivo" Visibility="Hidden" Content="Guardar en Archivo" Cursor="Hand" FontSize="24" HorizontalAlignment="Left" Margin="847,204,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Click="GuardarArchivo_Click" Height="72" BorderBrush="#FFF5E5E5" FontWeight="Bold"/>
@@ -32,6 +35,7 @@
         <StackPanel Name="AllPanel" Visibility="Hidden" HorizontalAlignment="Left" Height="280" Margin="45,71,0,0" VerticalAlignment="Top" Width="1148"/>
         <Button Content="Inicio" Name="Back" Visibility="Collapsed" HorizontalAlignment="Left" FontSize="25" Cursor="Hand" FontWeight="Bold" Margin="507,567,0,0" VerticalAlignment="Top" Width="220" Click="Back_Click" Height="67"/>
         <Button Name="salir" Content="Salir" HorizontalAlignment="Left" Margin="941,491,0,0" VerticalAlignment="Top" Width="252" Height="72" FontSize="24" FontWeight="Bold" Click="Button_Click"/>
+        <Label Name="Titulo_Inicial" Content="Bienvenido al Simulador de Mall" FontSize="30" Foreground="#FFF9F9F9" Margin="407,34,407.6,0" VerticalAlignment="Top" Height="60" RenderTransformOrigin="-0.003,0.533"/>
 
     </Grid>
 </Window>
