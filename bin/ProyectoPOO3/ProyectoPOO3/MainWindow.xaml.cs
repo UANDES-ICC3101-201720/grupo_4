@@ -59,6 +59,7 @@ namespace ProyectoPOO3
         }
         private void Datos_Click(object sender, RoutedEventArgs e)
         {
+            ResetSimulation();
             HideBottons();
             PisosLabel.Visibility = Visibility.Visible;
             PisosText.Visibility = Visibility.Visible;
@@ -529,18 +530,29 @@ namespace ProyectoPOO3
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             HideBottons();
-            if (simulacion.DiaActual<=10)
+            if (simulacion.AllStores.Count()==0 & simulacion.AllFloors.Count()==0)
             {
                 Reportes.Visibility = Visibility.Visible;
                 Plano.Visibility = Visibility.Visible;
-                PassDay.Visibility = Visibility.Visible;
+                Simulacion.Visibility = Visibility.Visible;
             }
             else
             {
-                Reportes.Visibility = Visibility.Visible;
-                Plano.Visibility = Visibility.Visible;
-                Datos.Visibility = Visibility.Visible;
-            }           
+                if (simulacion.DiaActual <= 10)
+                {
+                    Reportes.Visibility = Visibility.Visible;
+                    Plano.Visibility = Visibility.Visible;
+                    PassDay.Visibility = Visibility.Visible;
+                    GuardarArchivo.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    Reportes.Visibility = Visibility.Visible;
+                    Plano.Visibility = Visibility.Visible;
+                    Simulacion.Visibility = Visibility.Visible;
+                    GuardarArchivo.Visibility = Visibility.Visible;
+                }
+            }
         }
 
         private void PassDay_Click(object sender, RoutedEventArgs e)
@@ -573,6 +585,7 @@ namespace ProyectoPOO3
         {
             simulacion = new Simular();
             DiaLabel.Content = "Dia 1";
+            TiendasGrid.Items.Clear();
             ReportesComboBox.Items.Clear();
         }
 
