@@ -13,7 +13,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="Capture001.jpg"/>
         </Grid.Background>
-        <Button Name="PassDay" Visibility="Hidden" Content="Siguente Dia" HorizontalAlignment="Left" Margin="45,361,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Height="70" BorderBrush="#FFF5E5E5" FontWeight="Bold" FontSize="25" Click="PassDay_Click" />
+        <Button Name="PassDay" Visibility="Hidden" Content="Siguiente Dia" HorizontalAlignment="Left" Margin="45,361,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Height="70" BorderBrush="#FFF5E5E5" FontWeight="Bold" FontSize="25" Click="PassDay_Click" />
         <Label Name="DiaLabel" Visibility="Hidden" HorizontalAlignment="Left" FontSize="24" Margin="45,20,0,0" Content="Dia 1" VerticalAlignment="Top" Foreground="White" Cursor="Help" Height="46" Width="111" FontWeight="Bold"/>
         <Button Name="GuardarArchivo" Visibility="Hidden" Content="Guardar en Archivo" Cursor="Hand" FontSize="24" HorizontalAlignment="Left" Margin="847,204,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Click="GuardarArchivo_Click" Height="72" BorderBrush="#FFF5E5E5" FontWeight="Bold"/>
         <Button Name="Reportes" Visibility="Visible" Content="Reportes" Cursor="Hand" FontSize="24" HorizontalAlignment="Left" Margin="45,491,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Click="Reportes_Click" Height="72" BorderBrush="#FFF5E5E5" FontWeight="Bold"/>
