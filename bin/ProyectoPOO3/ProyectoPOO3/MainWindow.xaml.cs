@@ -464,6 +464,7 @@ namespace ProyectoPOO3
         private void Reportes_Click(object sender, RoutedEventArgs e)
         {
             HideBottons();
+            Back.Visibility = Visibility.Visible;
             ReportesComboBox.Visibility = Visibility.Visible;
         }
 
@@ -477,7 +478,9 @@ namespace ProyectoPOO3
                 TextBlock textBlock = new TextBlock
                 {
                     Text = simulacion.Reportes[index],
-                    Foreground = Brushes.White
+                    Foreground = Brushes.Black,
+                    Background = Brushes.Gray,
+                    FontSize = 19
                 };
                 AllPanel.Children.Add(textBlock);
 

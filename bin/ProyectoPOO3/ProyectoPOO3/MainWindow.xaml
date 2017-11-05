@@ -33,7 +33,7 @@
         <ComboBox Name="TiendasGrid" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="TiendasGrid_SelectionChanged"/>
         <ComboBox Name="ReportesComboBox" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ReportesComboBox_SelectionChanged"/>
         <StackPanel Name="AllPanel" Visibility="Hidden" HorizontalAlignment="Left" Height="280" Margin="45,71,0,0" VerticalAlignment="Top" Width="1148"/>
-        <Button Content="Inicio" Name="Back" Visibility="Collapsed" HorizontalAlignment="Left" FontSize="25" Cursor="Hand" FontWeight="Bold" Margin="507,567,0,0" VerticalAlignment="Top" Width="220" Click="Back_Click" Height="67"/>
+        <Button Content="Inicio" Name="Back" Visibility="Hidden" HorizontalAlignment="Left" FontSize="25" Cursor="Hand" FontWeight="Bold" Margin="507,567,0,0" VerticalAlignment="Top" Width="220" Click="Back_Click" Height="67"/>
         <Button Name="salir" Content="Salir" HorizontalAlignment="Left" Margin="941,491,0,0" VerticalAlignment="Top" Width="252" Height="72" FontSize="24" FontWeight="Bold" Click="Button_Click"/>
         <Label Name="Titulo_Inicial" Content="Bienvenido al Simulador de Mall" FontSize="30" Foreground="#FFF9F9F9" Margin="407,34,407.6,0" VerticalAlignment="Top" Height="60" RenderTransformOrigin="-0.003,0.533"/>
         
