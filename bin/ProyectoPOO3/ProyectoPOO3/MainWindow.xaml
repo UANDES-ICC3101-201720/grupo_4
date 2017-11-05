@@ -11,7 +11,7 @@
     </Window.Background>
     <Grid Background="#FF913A3A">
         <Button Name="PassDay" Visibility="Hidden" Content="Siguente Dia" HorizontalAlignment="Left" Margin="45,361,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Height="70" BorderBrush="#FFF5E5E5" FontWeight="Bold" FontSize="25" Click="PassDay_Click" />
-        <Label Name="DiaLabel" HorizontalAlignment="Left" FontSize="20" Margin="45,20,0,0" Content="Dia 1" VerticalAlignment="Top" Foreground="White" Cursor="Help"/>
+        <Label Name="DiaLabel" Visibility="Hidden" HorizontalAlignment="Left" FontSize="24" Margin="45,20,0,0" Content="Dia 1" VerticalAlignment="Top" Foreground="White" Cursor="Help" Height="46" Width="111" FontWeight="Bold"/>
         <Button Name="GuardarArchivo" Visibility="Hidden" Content="Guardar en Archivo" Cursor="Hand" FontSize="24" HorizontalAlignment="Left" Margin="847,204,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Click="GuardarArchivo_Click" Height="72" BorderBrush="#FFF5E5E5" FontWeight="Bold"/>
         <Button Name="Reportes" Visibility="Visible" Content="Reportes" Cursor="Hand" FontSize="24" HorizontalAlignment="Left" Margin="45,491,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Click="Reportes_Click" Height="72" BorderBrush="#FFF5E5E5" FontWeight="Bold"/>
         <Button Name="Simulacion" Visibility="Visible" Content="Iniciar Simulacion" Cursor="Hand" FontSize="24" HorizontalAlignment="Left" Margin="45,361,0,0" VerticalAlignment="Top" Width="267" Background="#FFF5EBEB" Click="Simulacion_Click" Height="72" BorderBrush="#FFF5E5E5" FontWeight="Bold"/>
@@ -26,11 +26,12 @@
         <Button Name="EnterTiendas" Visibility="Hidden" Content="Enter" Cursor="Hand" HorizontalAlignment="Left" Margin="538,561,0,0" VerticalAlignment="Top" Width="160" Background="#FFF5ECEC" BorderBrush="#FFA45050" Click="EnterTiendas_Click" Height="73" FontSize="22" FontWeight="Bold"/>
         <Button Name="EnterTiendasArea" Visibility="Hidden" Content="Enter" Cursor="Hand" HorizontalAlignment="Left" Margin="538,565,0,0" VerticalAlignment="Top" Width="160" Background="White" BorderBrush="#FFA45050" Click="EnterTiendasArea_Click" Height="64" FontSize="22" FontWeight="Bold"/>
         <StackPanel Name="Panel" Visibility="Hidden" HorizontalAlignment="Left" Height="353" Margin="338,242,0,0" VerticalAlignment="Top" Width="509"  Background="{x:Null}"/>
-        <Button Name ="EnterMall" Visibility="Hidden" FontSize="25" FontWeight="Bold" Content="Enter" HorizontalAlignment="Left" Margin="538,561,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderBrush="#FFA45050" Click="EnterMall_Click" Height="73"/>
+        <Button Name ="EnterMall" Visibility="Visible" FontSize="25" FontWeight="Bold" Content="Enter" HorizontalAlignment="Left" Margin="538,561,0,0" VerticalAlignment="Top" Width="160"  BorderBrush="#FFA45050" Click="EnterMall_Click" Height="73" Background="#FFD6D6D6"/>
         <ComboBox Name="TiendasGrid" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="TiendasGrid_SelectionChanged"/>
         <ComboBox Name="ReportesComboBox" Visibility="Hidden" HorizontalAlignment="Left" Margin="66,71,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ReportesComboBox_SelectionChanged"/>
         <StackPanel Name="AllPanel" Visibility="Hidden" HorizontalAlignment="Left" Height="280" Margin="45,71,0,0" VerticalAlignment="Top" Width="1148"/>
         <Button Content="Inicio" Name="Back" Visibility="Collapsed" HorizontalAlignment="Left" FontSize="25" Cursor="Hand" FontWeight="Bold" Margin="507,567,0,0" VerticalAlignment="Top" Width="220" Click="Back_Click" Height="67"/>
+        <Button Name="salir" Content="Salir" HorizontalAlignment="Left" Margin="941,491,0,0" VerticalAlignment="Top" Width="252" Height="72" FontSize="24" FontWeight="Bold" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -53,7 +53,7 @@ namespace ProyectoPOO3
             Simulacion.Visibility = Visibility.Hidden;
             SimularSerializable.Visibility = Visibility.Hidden;
             GuardarArchivo.Visibility = Visibility.Hidden;
-
+            salir.Visibility = Visibility.Hidden;
 
         }
         private void Datos_Click(object sender, RoutedEventArgs e)
@@ -152,7 +152,7 @@ namespace ProyectoPOO3
                     PisosText.Visibility = Visibility.Hidden;
                     FillListBox(j, "Tienda", 0);
                     Panel.Visibility = Visibility.Visible;
-                    PisosLabel.Content = "Area por tienda";
+                    PisosLabel.Content = "Ingrese Area por tienda";
                 }
             }
             else
@@ -177,7 +177,7 @@ namespace ProyectoPOO3
                 {
                     HideBottons();
                     EnterMall.Visibility = Visibility.Visible;
-                    PisosLabel.Content = "Ingrese\nHoras que funcionara el Mall\nDinero inicial del Mall\nPrecio Metro Cuadrado\n Sueldo Promedio Empleados";
+                    PisosLabel.Content = "Ingrese datos solicitados";
                     FillListBox(0, "", 1);
                     Panel.Visibility = Visibility.Visible;
                     PisosLabel.Visibility = Visibility.Visible;
@@ -273,27 +273,27 @@ namespace ProyectoPOO3
                 int left_pos_panel_text = -200;
                 textboxes.Clear();
                 Panel.Children.Clear();
-                string[] palabras = { "Dinero", "Mall","Precio Metro Cuadrado","Sueldos Promedio" };
+                string[] palabras = { "Dinero Inicial", "Horas Mall","Precio Mt Cuadrado","Sueldos Promedio" };
                 for (int i = 0; i < 4; i++)
                 {
                     TextBox textBox = new TextBox
                     {
-                        Width = 70,
+                        Width = 140,
                         Text = palabras[i],
                         Background = null,
                         BorderBrush = null,
                         Foreground = Brushes.White,
                         Margin = new Thickness(left_pos_panel_text, top_pos_panel_text, right_pos_panel_text, bottom_pos_panel_text),
-                        HorizontalContentAlignment = HorizontalAlignment.Center,
+                        HorizontalContentAlignment = HorizontalAlignment.Left,
 
                     };
                     textBox.GotFocus += TextBox_TextChanged;
-                    textBox.Background = null;
-                    textBox.BorderBrush = null;
-                    textBox.Foreground = Brushes.White;
+                    textBox.Background = Brushes.White;
+                    textBox.BorderBrush = Brushes.Black;
+                    textBox.Foreground = Brushes.Black;
                     textboxes.Add(textBox);
                     Panel.Children.Add(textBox);
-                    left_pos_panel_text += 150;
+                    left_pos_panel_text += 200;
                 }
             }
 
@@ -307,6 +307,7 @@ namespace ProyectoPOO3
         private void EnterMall_Click(object sender, RoutedEventArgs e)
         {
             HideBottons();
+            DiaLabel.Visibility = Visibility.Visible;
             DiaLabel.Visibility = Visibility.Visible;
             
             IniciarMall();
@@ -427,6 +428,7 @@ namespace ProyectoPOO3
                 Reportes.Visibility = Visibility.Visible;
                 Simulacion.Visibility = Visibility.Visible;
                 Plano.Visibility = Visibility.Visible;
+                salir.Visibility = Visibility.Visible;
                 GuardarArchivo.Visibility = Visibility.Visible;
             }
             
@@ -565,6 +567,11 @@ namespace ProyectoPOO3
             simulacion = new Simular();
             DiaLabel.Content = "Dia 1";
             ReportesComboBox.Items.Clear();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
