@@ -50,6 +50,9 @@ namespace ProyectoPOO3
             TiendasGrid.Visibility = Visibility.Hidden;
             Back.Visibility = Visibility.Hidden;
             Titulo_Principal.Visibility = Visibility.Hidden;
+            Simulacion.Visibility = Visibility.Hidden;
+            SimularSerializable.Visibility = Visibility.Hidden;
+            GuardarArchivo.Visibility = Visibility.Hidden;
 
 
         }
@@ -305,6 +308,7 @@ namespace ProyectoPOO3
         {
             HideBottons();
             DiaLabel.Visibility = Visibility.Visible;
+            
             IniciarMall();
             Program(simulacion.mall.Horas);
         }
@@ -415,13 +419,15 @@ namespace ProyectoPOO3
                 Reportes.Visibility = Visibility.Visible;
                 PassDay.Visibility = Visibility.Visible;
                 Plano.Visibility = Visibility.Visible;
+                GuardarArchivo.Visibility = Visibility.Visible;
             }
             else
             {
                 DiaLabel.Content = "Dia 10";
                 Reportes.Visibility = Visibility.Visible;
-                Datos.Visibility = Visibility.Visible;
+                Simulacion.Visibility = Visibility.Visible;
                 Plano.Visibility = Visibility.Visible;
+                GuardarArchivo.Visibility = Visibility.Visible;
             }
             
 
@@ -487,7 +493,7 @@ namespace ProyectoPOO3
                 int gananciastotales = TiendaSelected.GananciasTotales();
                 TextBlock textBlock = new TextBlock
                 {
-                    Text = "Nombre: " + TiendaSelected.Nombre + "\nCantidad de Empleados: " + TiendaSelected.CantidadTrabajadores + "\nCategoria: " + TiendaSelected.Categoria + "\nPiso: " + TiendaSelected.Piso.numero + "\nArea: " + TiendaSelected.Volumen + "\nPrecio Minimio: " + TiendaSelected.PrecioMinimo + "\nPrecio Maximo: " + TiendaSelected.PrecioMaximo + "\nCosto Arriendo: "+ TiendaSelected.Volumen*simulacion.mall.PrecioMetroCuadrado+"\nCostos Sueldos: " + TiendaSelected.CantidadTrabajadores*simulacion.mall.SueldosPromedio + "\nVenta este dia: "+TiendaSelected.VentasDiarias[simulacion.DiaActual-1]+"\nGanancia este dia: "+ TiendaSelected.GananciasDiarias[simulacion.DiaActual - 1]+"\nGanancias totales hasta hoy:\n"+gananciastotales,
+                    Text = "Nombre: " + TiendaSelected.Nombre + "\nCantidad de Empleados: " + TiendaSelected.CantidadTrabajadores + "\nCategoria: " + TiendaSelected.Categoria + "\nPiso: " + TiendaSelected.Piso.numero + "\nArea: " + TiendaSelected.Volumen + "\nPrecio Minimio: " + TiendaSelected.PrecioMinimo + "\nPrecio Maximo: " + TiendaSelected.PrecioMaximo + "\nCosto Arriendo: "+ TiendaSelected.Volumen*simulacion.mall.PrecioMetroCuadrado+"\nCostos Sueldos: " + TiendaSelected.CantidadTrabajadores*simulacion.mall.SueldosPromedio + "\nVenta este dia: "+TiendaSelected.VentasDiarias[simulacion.DiaActual-1]+"\nGanancia este dia: "+ TiendaSelected.GananciasDiarias[simulacion.DiaActual - 1]+"\nGanancias totales hasta hoy:\n"+gananciastotales+"\nClientes este dia: "+TiendaSelected.ContadorClientes,
                     Width = 200,
                     Foreground = Brushes.White
                 };
@@ -515,7 +521,7 @@ namespace ProyectoPOO3
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             HideBottons();
-            if (simulacion.DiaActual<10)
+            if (simulacion.DiaActual<=10)
             {
                 Reportes.Visibility = Visibility.Visible;
                 Plano.Visibility = Visibility.Visible;
@@ -532,6 +538,33 @@ namespace ProyectoPOO3
         private void PassDay_Click(object sender, RoutedEventArgs e)
         {
             Program(simulacion.mall.Horas);
+        }
+
+        private void Simulacion_Click(object sender, RoutedEventArgs e)
+        {
+            HideBottons();
+            Datos.Visibility = Visibility.Visible;
+            SimularSerializable.Visibility = Visibility.Visible;
+        }
+
+        private void SimularSerializable_Click(object sender, RoutedEventArgs e)
+        {
+            ResetSimulation();
+            simulacion.CargarSimulacion("Serializable.txt");
+            simulacion.CrearTrabajadores(simulacion.PeopleNames,simulacion.AllStores);
+            FillStoresGrid();
+            Program(simulacion.mall.Horas);
+        }
+
+        private void GuardarArchivo_Click(object sender, RoutedEventArgs e)
+        {
+            simulacion.GuardarSimulacion("Serializable.txt");
+        }
+        public void ResetSimulation()
+        {
+            simulacion = new Simular();
+            DiaLabel.Content = "Dia 1";
+            ReportesComboBox.Items.Clear();
         }
     }
 }

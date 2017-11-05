@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.IO;
 using System.Threading;
 
 namespace ProyectoPOO3
@@ -104,6 +107,7 @@ namespace ProyectoPOO3
                 StoresNames.Remove(nombre);
                 piso.AgregarTienda(local, Area);
                 AllStores.Add(local);
+                AllComercialStores.Add(local);
             }
             if (Tipo[aux] == "Entretencion")
             {
@@ -112,6 +116,7 @@ namespace ProyectoPOO3
                 StoresNames.Remove(nombre);
                 piso.AgregarTienda(local, Area);
                 AllStores.Add(local);
+                AllFunStores.Add(local);
                 aux = 0;
             }
             if (Tipo[aux] == "Comida")
@@ -121,6 +126,7 @@ namespace ProyectoPOO3
                 StoresNames.Remove(nombre);
                 piso.AgregarTienda(local, Area);
                 AllStores.Add(local);
+                AllFoodStores.Add(local);
             }
             aux += 1;
         }
@@ -286,7 +292,9 @@ namespace ProyectoPOO3
                             {
                                 piso1 = piso;
                                 LocalComercial local = new LocalComercial(datos[1], Convert.ToInt32(datos[2]), datos[3], Convert.ToInt32(datos[4]), Convert.ToInt32(datos[5]), piso1);
-
+                                AllComercialStores.Add(local);
+                                AllStores.Add(local);
+                               
                             }
                         }
                     }
@@ -299,7 +307,9 @@ namespace ProyectoPOO3
                             {
                                 piso1 = piso;
                                 LocalComida local = new LocalComida(datos[1], Convert.ToInt32(datos[2]), datos[3], Convert.ToInt32(datos[4]), Convert.ToInt32(datos[5]), piso1);
-
+                                AllFoodStores.Add(local);
+                                AllStores.Add(local);
+                                
                             }
                         }
                     }
@@ -312,7 +322,8 @@ namespace ProyectoPOO3
                             {
                                 piso1 = piso;
                                 LocalEntretencion local = new LocalEntretencion(datos[1], Convert.ToInt32(datos[2]), datos[3], Convert.ToInt32(datos[4]), Convert.ToInt32(datos[5]), piso1);
-
+                                AllFunStores.Add(local);
+                                AllStores.Add(local);
                             }
                         }
                     }
@@ -321,13 +332,14 @@ namespace ProyectoPOO3
             }
             catch (Exception)
             {
-
+                
                 throw;
             }
         }
         public void GuardarSimulacion(string path)
         {
             FileStream fs = new FileStream(path, FileMode.Create);
+            fs.Close();
             StreamWriter sr = new StreamWriter(path);
             sr.WriteLine("Mall," + mall.Pisos + "," + mall.Horas + "," + mall.Dinero + "," + mall.PrecioMetroCuadrado + "," + mall.SueldosPromedio);
             foreach (Piso piso in AllFloors)
@@ -347,7 +359,7 @@ namespace ProyectoPOO3
                 sr.WriteLine("Local Entretencion," + tienda.Categoria + "," + tienda.Volumen + "," + tienda.Nombre + "," + tienda.PrecioMinimo + "," + tienda.PrecioMaximo + "," + tienda.Piso.numero);
             }
             sr.Close();
-            fs.Close();
+            
 
         }
     }

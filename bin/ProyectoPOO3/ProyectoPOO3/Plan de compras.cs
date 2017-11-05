@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ProyectoPOO3
 {
@@ -16,14 +20,16 @@ namespace ProyectoPOO3
             foreach (Piso piso in pisos)
             {
                 Random random = new Random();
-                int entrar = random.Next(10);
-                if (entrar > 3)
+                int entrar = random.Next(8);
+                int rnd = random.Next(10);
+                if (entrar < rnd)
                 {
                     Stores.Reverse();
                     foreach (Tienda tienda in Stores)
                     {
                         int entrar1 = random.Next(10);
-                        if (entrar1 > 6 & tienda.Piso.Equals(piso))
+                        int rnd1 = random.Next(8);
+                        if (rnd1 < entrar1 & tienda.Piso.Equals(piso))
                         {
                             Tiendas.Add(tienda);
                         }
