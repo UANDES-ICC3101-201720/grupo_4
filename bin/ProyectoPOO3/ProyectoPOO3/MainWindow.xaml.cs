@@ -81,7 +81,7 @@ namespace ProyectoPOO3
                 FillListBox(size, "Piso", 0);
                 Panel.Visibility = Visibility.Visible;
                 Cantidadpisos = size;
-                PisosLabel.Content = "Areas";
+                PisosLabel.Content = "Ingrese Areas de Pisos";
                 PisosText.Clear();
             }
             else
@@ -128,7 +128,7 @@ namespace ProyectoPOO3
             if (pisos.Count() > Cantidadpisos)
             {
                 HideBottons();
-                PisosLabel.Content = "Cantidad de Tiendas";
+                PisosLabel.Content = "Ingrese Cantidad de Tiendas";
                 PisosText.Clear();
                 PisosLabel.Visibility = Visibility.Visible;
                 PisosText.Visibility = Visibility.Visible;
@@ -555,6 +555,7 @@ namespace ProyectoPOO3
             simulacion.CargarSimulacion("Serializable.txt");
             simulacion.CrearTrabajadores(simulacion.PeopleNames,simulacion.AllStores);
             FillStoresGrid();
+            DiaLabel.Visibility = Visibility.Visible;
             Program(simulacion.mall.Horas);
         }
 
