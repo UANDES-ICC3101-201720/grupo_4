@@ -498,7 +498,9 @@ namespace ProyectoPOO3
                 {
                     Text = "Nombre: " + TiendaSelected.Nombre + "\nCantidad de Empleados: " + TiendaSelected.CantidadTrabajadores + "\nCategoria: " + TiendaSelected.Categoria + "\nPiso: " + TiendaSelected.Piso.numero + "\nArea: " + TiendaSelected.Volumen + "\nPrecio Minimio: " + TiendaSelected.PrecioMinimo + "\nPrecio Maximo: " + TiendaSelected.PrecioMaximo + "\nCosto Arriendo: "+ TiendaSelected.Volumen*simulacion.mall.PrecioMetroCuadrado+"\nCostos Sueldos: " + TiendaSelected.CantidadTrabajadores*simulacion.mall.SueldosPromedio + "\nVenta este dia: "+TiendaSelected.VentasDiarias[simulacion.DiaActual-1]+"\nGanancia este dia: "+ TiendaSelected.GananciasDiarias[simulacion.DiaActual - 1]+"\nGanancias totales hasta hoy:\n"+gananciastotales+"\nClientes este dia: "+TiendaSelected.ContadorClientes,
                     Width = 200,
-                    Foreground = Brushes.White
+                    Background= Brushes.Gray,
+                    Foreground = Brushes.Black,
+                    FontSize = 15
                 };
                 AllPanel.Children.Add(textBlock);
 
