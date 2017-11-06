@@ -484,6 +484,7 @@ namespace ProyectoPOO3
                     Background = Brushes.Gray,
                     FontSize = 19
                 };
+                index = 0;
                 AllPanel.Children.Add(textBlock);
 
             }
@@ -498,6 +499,7 @@ namespace ProyectoPOO3
                         TiendaSelected = tienda;
                     }
                 }
+                
                 int gananciastotales = TiendaSelected.GananciasTotales();
                 TextBlock textBlock = new TextBlock
                 {
@@ -515,7 +517,10 @@ namespace ProyectoPOO3
         private void ReportesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             HideBottons();
-            FillStackPanelWithInfo(1);
+            if (TiendasGrid.Items.Count != 0)
+            {
+                FillStackPanelWithInfo(1);
+            }
             AllPanel.Visibility = Visibility.Visible;
             Back.Visibility = Visibility.Visible;
         }
@@ -525,7 +530,12 @@ namespace ProyectoPOO3
             HideBottons();
             TiendasGrid.Visibility = Visibility.Visible;
             Back.Visibility = Visibility.Visible;
-            FillStackPanelWithInfo(2);
+            if (TiendasGrid.Items.Count!=0)
+            {
+                FillStackPanelWithInfo(2);
+            }
+            
+            
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -585,6 +595,7 @@ namespace ProyectoPOO3
         }
         public void ResetSimulation()
         {
+            AllPanel.Children.Clear();
             simulacion = new Simular();
             DiaLabel.Content = "Dia 1";
             TiendasGrid.Items.Clear();
@@ -593,6 +604,7 @@ namespace ProyectoPOO3
             pisoactual = 1;
             cantidadtiendaspiso = 0;
             cantidadtiendasusadas = 0;
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
