@@ -20,16 +20,14 @@ namespace ProyectoPOO3
             foreach (Piso piso in pisos)
             {
                 Random random = new Random();
-                int entrar = random.Next(8);
-                int rnd = random.Next(10);
-                if (entrar < rnd)
+                int entrar = random.Next(3);
+                if (entrar <2)
                 {
                     Stores.Reverse();
                     foreach (Tienda tienda in Stores)
                     {
-                        int entrar1 = random.Next(10);
-                        int rnd1 = random.Next(8);
-                        if (rnd1 < entrar1 & tienda.Piso.Equals(piso))
+                        int entrar1 = random.Next(6);
+                        if (entrar1 < 4 & tienda.Piso.Equals(piso))
                         {
                             Tiendas.Add(tienda);
                         }

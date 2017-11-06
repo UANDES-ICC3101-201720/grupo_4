@@ -381,7 +381,7 @@ namespace ProyectoPOO3
             {
                 if (tiempogente == 4 & j<minutos-30)
                 {
-                    for (int k = 0; k < 9; k++)
+                    for (int k = 0; k < 15; k++)
                     {
                         Random random = new Random();
                         int cliente1 = random.Next(simulacion.Clientes.Count());
@@ -593,6 +593,7 @@ namespace ProyectoPOO3
             simulacion.GuardarSimulacion("Serializable.txt");
             MessageBox.Show("Archivo guardado con exito!");
         }
+
         public void ResetSimulation()
         {
             AllPanel.Children.Clear();
