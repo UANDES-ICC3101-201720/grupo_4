@@ -55,9 +55,9 @@ namespace ProyectoPOO3
             int CMAX = ClientesPorDia(CantidadTrabajadores, ClientesDiaAnterior, Volumen, PrecioMinimo, PrecioMaximo);
             int CostoArriendo = Volumen * mall.PrecioMetroCuadrado; // Dado que en el enunciado no dice cuanto es el Precio Arriendo por metro cuadrado asumimos que es 100.
             int V = random.Next(PrecioMinimo, PrecioMaximo);
-            int Ganancia = V * CMAX - (CantidadTrabajadores + CostoArriendo) - CantidadTrabajadores * mall.SueldosPromedio;
+            int Ganancia = V * CMAX - (CantidadTrabajadores * mall.SueldosPromedio + CostoArriendo);
             GananciaEfectiva = Ganancia;
-            int Venta = V * CMAX - (CantidadTrabajadores + CostoArriendo);
+            int Venta = V * CMAX;
             Ventas = Venta;
         }
         public void SumarCliente()
