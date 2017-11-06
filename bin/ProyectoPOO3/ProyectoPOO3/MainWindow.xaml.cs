@@ -64,6 +64,7 @@ namespace ProyectoPOO3
             PisosLabel.Visibility = Visibility.Visible;
             PisosText.Visibility = Visibility.Visible;
             EnterPisos.Visibility = Visibility.Visible;
+            PisosLabel.Content = "Ingrese Cantidad de Pisos";
 
         }
 
@@ -580,6 +581,7 @@ namespace ProyectoPOO3
         private void GuardarArchivo_Click(object sender, RoutedEventArgs e)
         {
             simulacion.GuardarSimulacion("Serializable.txt");
+            MessageBox.Show("Archivo guardado con exito!");
         }
         public void ResetSimulation()
         {
@@ -587,6 +589,10 @@ namespace ProyectoPOO3
             DiaLabel.Content = "Dia 1";
             TiendasGrid.Items.Clear();
             ReportesComboBox.Items.Clear();
+            cantidadpisos = 0;
+            pisoactual = 1;
+            cantidadtiendaspiso = 0;
+            cantidadtiendasusadas = 0;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
