@@ -372,6 +372,7 @@ namespace ProyectoPOO3
         public void Program(int horas)
         {           
             HideBottons();
+            simulacion.DiaActual += 1;
             simulacion.mall.AbrirMall(simulacion.AllStores);
             simulacion.Clientes.Clear();
             simulacion.CrearClientes(simulacion.PeopleNames, simulacion.AllStores, simulacion.AllFloors);
@@ -419,7 +420,6 @@ namespace ProyectoPOO3
             {
                 
                 DiaLabel.Content = "Dia " + simulacion.DiaActual;
-                simulacion.DiaActual += 1;
                 Reportes.Visibility = Visibility.Visible;
                 PassDay.Visibility = Visibility.Visible;
                 Plano.Visibility = Visibility.Visible;
@@ -433,6 +433,7 @@ namespace ProyectoPOO3
                 Plano.Visibility = Visibility.Visible;
                 salir.Visibility = Visibility.Visible;
                 GuardarArchivo.Visibility = Visibility.Visible;
+                Titulo_Principal.Visibility = Visibility.Visible;
             }
             
 
@@ -549,7 +550,7 @@ namespace ProyectoPOO3
             }
             else
             {
-                if (simulacion.DiaActual <= 10)
+                if (simulacion.DiaActual < 10)
                 {
                     Reportes.Visibility = Visibility.Visible;
                     Plano.Visibility = Visibility.Visible;
@@ -562,6 +563,8 @@ namespace ProyectoPOO3
                     Plano.Visibility = Visibility.Visible;
                     Simulacion.Visibility = Visibility.Visible;
                     GuardarArchivo.Visibility = Visibility.Visible;
+                    salir.Visibility = Visibility.Visible;
+                    Titulo_Principal.Visibility = Visibility.Visible;
                 }
             }
         }

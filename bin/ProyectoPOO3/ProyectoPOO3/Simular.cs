@@ -22,7 +22,7 @@ namespace ProyectoPOO3
         public List<LocalEntretencion> AllFunStores = new List<LocalEntretencion>();
         public string reporte = "";
         public Mall mall;
-        public int DiaActual = 1;
+        public int DiaActual = 0;
         public int aux = 0;
         public Mall Mall { get => mall; set => mall = value; }
         public void CrearClientes(List<string> Nombres, List<Tienda> Tiendas, List<Piso> Pisos)
