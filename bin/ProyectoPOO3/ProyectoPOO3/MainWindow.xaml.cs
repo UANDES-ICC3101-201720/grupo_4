@@ -131,7 +131,7 @@ namespace ProyectoPOO3
             if (pisos.Count() > Cantidadpisos)
             {
                 HideBottons();
-                PisosLabel.Content = "Ingrese Cantidad de Tiendas";
+                PisosLabel.Content = "Ingrese Cantidad de Tiendas para el piso "+pisoactual;
                 PisosText.Clear();
                 PisosLabel.Visibility = Visibility.Visible;
                 PisosText.Visibility = Visibility.Visible;
@@ -170,12 +170,13 @@ namespace ProyectoPOO3
             if (cantidadtiendasusadas >= cantidadtiendaspiso)
             {
                 HideBottons();
-                PisosLabel.Content = "Cantidad de tiendas\n siguiente piso";
+                pisoactual += 1;
+                PisosLabel.Content = "Cantidad de tiendas para el piso "+pisoactual;
                 PisosLabel.Visibility = Visibility.Visible;
                 PisosText.Visibility = Visibility.Visible;
                 EnterTiendas.Visibility = Visibility.Visible;
                 cantidadtiendasusadas = 0;
-                pisoactual += 1;
+                
                 if (pisoactual > cantidadpisos)
                 {
                     HideBottons();
