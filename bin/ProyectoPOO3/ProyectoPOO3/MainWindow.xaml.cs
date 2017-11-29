@@ -234,7 +234,7 @@ namespace ProyectoPOO3
                 int left_pos_panel_text = -300;
                 textboxes.Clear();
                 Panel.Children.Clear();
-                int contador = 0;
+                int contador = 0;          
                 for (int i = 1; i <= cantidad; i++)
                 {
                     TextBox textBox = new TextBox
@@ -246,6 +246,7 @@ namespace ProyectoPOO3
                         Foreground = Brushes.Black,
                         Margin = new Thickness(left_pos_panel_text, top_pos_panel_text, right_pos_panel_text, bottom_pos_panel_text),
                         HorizontalContentAlignment = HorizontalAlignment.Center,
+                        HorizontalAlignment = HorizontalAlignment.Center
 
                     };
                     textBox.GotFocus += TextBox_TextChanged;
@@ -277,7 +278,7 @@ namespace ProyectoPOO3
                 int left_pos_panel_text = -200;
                 textboxes.Clear();
                 Panel.Children.Clear();
-                string[] palabras = { "Dinero Inicial", "Horas Mall","Precio Mt Cuadrado","Sueldos Promedio" };
+                string[] palabras = { "Dinero Inicial", "Horas Mall","Precio Metros^2","Sueldos Promedio" };
                 for (int i = 0; i < 4; i++)
                 {
                     TextBox textBox = new TextBox
@@ -395,7 +396,7 @@ namespace ProyectoPOO3
                         }
                         catch (Exception)
                         {
-
+                            
 
                         }
                     }
